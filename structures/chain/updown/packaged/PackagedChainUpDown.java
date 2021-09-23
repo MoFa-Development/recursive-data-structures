@@ -1,8 +1,8 @@
-package DataStructures.PackagedChainUpDown;
+package structures.chain.updown.packaged;
 
-import DataStructures.Chain.Chain;
-import DataStructures.ChainUpDown.ChainUpDown;
 import Exceptions.ChainIndexOutOfBoundsException;
+import structures.chain.Chain;
+import structures.chain.updown.ChainUpDown;
 
 /**
  * @author Moritz Decker, Fabian Kessler

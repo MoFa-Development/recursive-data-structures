@@ -1,10 +1,10 @@
-package DataStructures.ChainDown;
+package structures.chain.down;
 
 import Exceptions.ChainIndexOutOfBoundsException;
+import structures.chain.Chain;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import DataStructures.Chain.Chain;
 
 /**
  * Upwards only chained list of s 
@@ -14,8 +14,8 @@ import DataStructures.Chain.Chain;
  */
 public class ChainDown<T> extends Chain<T>
 {
-    private ChainDownElement<T> firstElement;
-    private ChainDownElement<T> lastElement;
+    protected ChainDownElement<T> firstElement;
+    protected ChainDownElement<T> lastElement;
 
     public ChainDown()
     {
@@ -74,7 +74,7 @@ public class ChainDown<T> extends Chain<T>
                 lastElement = elem;
             }
         } else {
-            ChainDownElement<T> predecessorElem = getElem(index-1);
+            ChainDownElement<T> predecessorElem = getElement(index-1);
             predecessorElem.setNext(elem);
             elem.setNext(predecessorElem.getNext());
         }
@@ -96,10 +96,10 @@ public class ChainDown<T> extends Chain<T>
         }
 
         // can return null, which would also be correct
-        ChainDownElement<T> elemAfterIndex = getElem(index+1);
+        ChainDownElement<T> elemAfterIndex = getElement(index+1);
 
         if(index > 0) {
-            ChainDownElement<T> predecessorElem = getElem(index-1);
+            ChainDownElement<T> predecessorElem = getElement(index-1);
             predecessorElem.setNext(elemAfterIndex);
         }
 
@@ -114,7 +114,7 @@ public class ChainDown<T> extends Chain<T>
      * @return ObjecChainUpElement at spcified index or null if index out of bounds
      * @param index the index to get the element from
      */
-    private ChainDownElement<T> getElem(int index)
+    protected ChainDownElement<T> getElement(int index)
     {
         //? Is this even a good idea?
         if(index < 0 || index >= length) {
@@ -146,7 +146,7 @@ public class ChainDown<T> extends Chain<T>
             throw new ChainIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(length));
         }
         
-        return getElem(index).get();
+        return getElement(index).get();
     }
 
     /**

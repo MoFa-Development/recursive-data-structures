@@ -1,6 +1,6 @@
-package DataStructures.PackagedChainUpDown;
+package structures.chain.updown.packaged;
 
-import DataStructures.ChainUpDown.ChainUpDownElement;
+import structures.chain.updown.ChainUpDownElement;
 
 public class ChainPackage<T>
 {

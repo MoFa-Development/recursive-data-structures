@@ -1,6 +1,6 @@
-import DataStructures.ChainDown.ChainDown;
-import DataStructures.ChainUpDown.ChainUpDown;
 import Exceptions.ChainIndexOutOfBoundsException;
+import structures.chain.down.ChainDown;
+import structures.chain.updown.ChainUpDown;
 
 /**
  * Test class

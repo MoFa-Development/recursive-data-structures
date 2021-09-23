@@ -1,4 +1,4 @@
-package DataStructures.ChainDown;
+package structures.chain.down;
 
 /**
  * Element of an upwards chained list of Objects
@@ -8,8 +8,8 @@ package DataStructures.ChainDown;
  */
 public class ChainDownElement<T>
 {
-    private T obj;
-    private ChainDownElement<T> nextElem;
+    protected T obj;
+    protected ChainDownElement<T> nextElem;
 
 
     public ChainDownElement()
