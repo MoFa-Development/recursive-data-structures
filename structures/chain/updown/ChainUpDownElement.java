@@ -8,7 +8,7 @@ public class ChainUpDownElement<T> extends ChainDownElement<T>
     protected ChainUpDownElement<T> nextElem;
 
     public ChainUpDownElement() {
-        super();
+        super(null);
         this.prevElem = null;
     }
 
@@ -17,12 +17,19 @@ public class ChainUpDownElement<T> extends ChainDownElement<T>
         this.prevElem = null;
     }
 
-    public ChainUpDownElement(T obj, ChainUpDownElement<T> prevElem, ChainUpDownElement<T> nextElem) {
-        super(obj, nextElem);
+    public ChainUpDownElement(T obj, ChainUpDownElement<T> prevElem, ChainUpDownElement<T> nextElem)
+    {
+        super(obj);
         this.prevElem = prevElem;
+        this.nextElem = nextElem;
     }
 
-    @Override
+
+    public void setNext(ChainUpDownElement<T> nextElem)
+    {
+        this.nextElem = nextElem;
+    } 
+
     public ChainUpDownElement<T> getNext()
     {
         return this.nextElem;
@@ -40,6 +47,6 @@ public class ChainUpDownElement<T> extends ChainDownElement<T>
 
     public boolean hasPrev()
     {
-        return this.prevElem == null;
+        return this.prevElem != null;
     }
 }

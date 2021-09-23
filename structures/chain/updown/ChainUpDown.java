@@ -1,5 +1,7 @@
 package structures.chain.updown;
 
+import java.util.ArrayList;
+
 import exceptions.ChainIndexOutOfBoundsException;
 import structures.chain.down.ChainDown;
 
@@ -7,7 +9,25 @@ public class ChainUpDown<T> extends ChainDown<T>
 {
     protected ChainUpDownElement<T> firstElement;
     protected ChainUpDownElement<T> lastElement;
-    
+
+    @Override
+    public void add(T obj)
+    {
+        ChainUpDownElement<T> elem = new ChainUpDownElement<T>(obj);
+        
+        if(firstElement == null) {
+            firstElement = elem;
+            lastElement = elem;
+        }
+        else {
+            lastElement.setNext(elem);
+            elem.setPrev(lastElement);
+
+            lastElement = elem;
+        }
+
+        length++;
+    }
 
     @Override
     public void add(T obj, int index) throws ChainIndexOutOfBoundsException
@@ -29,19 +49,18 @@ public class ChainUpDown<T> extends ChainDown<T>
         // TODO implement
     }
 
-    @Override
     protected ChainUpDownElement<T> getElement(int index)
     {
         if(index < 0 || index >= length) {
             return null;
         }
         
-        if(index < length/2) {
+        if(index <= length/2) {
             ChainUpDownElement<T> currentElement = firstElement;
             
             for(int i = 0; i < index; i++) {
                 if(currentElement != null) {
-                    currentElement = currentElement.getNext();
+                    currentElement = currentElement.nextElem;
                 }
                 else {
                     return null;
@@ -53,7 +72,7 @@ public class ChainUpDown<T> extends ChainDown<T>
         else {
             ChainUpDownElement<T> currentElement = lastElement;
             
-            for(int i = length; i > index; i--) {
+            for(int i = length; i > index+1; i--) {
                 if(currentElement != null) {
                     currentElement = currentElement.getPrev();
                 }
@@ -65,4 +84,36 @@ public class ChainUpDown<T> extends ChainDown<T>
             return currentElement;
         }
     }
+
+    @Override
+    public T getLast() {
+        return this.lastElement.get();
+    }
+
+    /**
+     * @return Array of stored objects
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public T[] toArray()
+    {
+        ArrayList<T> list = new ArrayList<T>();
+        ChainUpDownElement<T> currentElement = firstElement;
+        
+        for(int i = 0; i < getLength(); i++) {
+            if(currentElement != null) {
+                list.add(currentElement.get());
+                
+                currentElement = currentElement.getNext();
+            }
+            else {
+                return null;
+            }
+        }
+        
+        T[] array = (T[]) list.toArray();
+
+        return array;
+    }
+
 }

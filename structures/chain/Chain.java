@@ -2,10 +2,11 @@ package structures.chain;
 
 import exceptions.ChainIndexOutOfBoundsException;
 
-public abstract class Chain<T> {
-    
+public abstract class Chain<T>
+{    
     protected int length = 0;
 
+    
     public int getLength()
     {
         return this.length;

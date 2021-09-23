@@ -15,27 +15,22 @@ public class ChainDownElement<T> extends ChainElement<T>
 
     public ChainDownElement()
     {
-        this.obj = null;
+        super(null);
         this.nextElem = null;
     }
 
     public ChainDownElement(T obj)
     {
-        this.obj = obj;
+        super(obj);
         this.nextElem = null;
     }
 
     public ChainDownElement(T obj, ChainDownElement<T> nextElem)
     {
-        this.obj = obj;
+        super(obj);
         this.nextElem = nextElem;
     }
 
-    
-    public T get()
-    {
-        return this.obj;
-    }
 
     public void setNext(ChainDownElement<T> nextElem)
     {

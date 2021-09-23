@@ -17,15 +17,7 @@ public class ChainDown<T> extends Chain<T>
 {
     protected ChainDownElement<T> firstElement;
     protected ChainDownElement<T> lastElement;
-
-    public ChainDown()
-    {
-        firstElement = null;
-        lastElement = null;
-        
-        length = 0;
-    }
-
+    
     /**
      * Append  at the end of the chain
      * 

@@ -1,5 +1,4 @@
 import exceptions.ChainIndexOutOfBoundsException;
-import structures.chain.down.ChainDown;
 import structures.chain.updown.ChainUpDown;
 
 /**
@@ -32,7 +31,8 @@ public class Test
         System.out.println(chain.toString());
         
         for(int i = 0; i < chain.getLength(); i++) {
-            System.out.println(Integer.toString(i) + ": " + chain.get(i));
+            String str = chain.get(i);
+            System.out.println(Integer.toString(i) + ": " + str);
         }
     }
 }
