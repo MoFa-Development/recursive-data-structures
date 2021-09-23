@@ -81,8 +81,24 @@ public class ChainUpDown<T> extends ChainDown<T>
         if(index < 0 || index >= length) {
             throw indexOutOfBounds(index);
         }
+        
+        ChainUpDownElement<T> elementAtIndex = getElement(index);
+        
+        if(elementAtIndex.hasNext()) {
+            elementAtIndex.getNext().setPrev(elementAtIndex.getPrev());
+        } else {
+            lastElement = elementAtIndex.getPrev();
+            super.lastElement = elementAtIndex.getPrev();
+        }
 
-        // TODO implement
+        if(elementAtIndex.hasPrev()) {
+            elementAtIndex.getPrev().setNext(elementAtIndex.getNext());
+        } else {
+            firstElement = elementAtIndex.getNext();
+            super.firstElement = elementAtIndex.getNext();
+        }
+
+        length--;
     }
 
     protected ChainUpDownElement<T> getElement(int index)

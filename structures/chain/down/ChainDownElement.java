@@ -44,6 +44,6 @@ public class ChainDownElement<T> extends ChainElement<T>
 
     public boolean hasNext()
     {
-        return this.nextElem == null;
+        return this.nextElem != null;
     }
 }
