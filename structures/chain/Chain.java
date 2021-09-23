@@ -1,6 +1,6 @@
 package structures.chain;
 
-import Exceptions.ChainIndexOutOfBoundsException;
+import exceptions.ChainIndexOutOfBoundsException;
 
 public abstract class Chain<T> {
     

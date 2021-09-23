@@ -1,4 +1,4 @@
-import Exceptions.ChainIndexOutOfBoundsException;
+import exceptions.ChainIndexOutOfBoundsException;
 import structures.chain.down.ChainDown;
 import structures.chain.updown.ChainUpDown;
 

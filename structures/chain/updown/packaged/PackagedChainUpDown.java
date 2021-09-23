@@ -1,6 +1,6 @@
 package structures.chain.updown.packaged;
 
-import Exceptions.ChainIndexOutOfBoundsException;
+import exceptions.ChainIndexOutOfBoundsException;
 import structures.chain.Chain;
 import structures.chain.updown.ChainUpDown;
 

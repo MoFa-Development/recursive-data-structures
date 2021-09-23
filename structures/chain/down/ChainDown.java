@@ -1,10 +1,11 @@
 package structures.chain.down;
 
-import Exceptions.ChainIndexOutOfBoundsException;
 import structures.chain.Chain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import exceptions.ChainIndexOutOfBoundsException;
 
 /**
  * Upwards only chained list of s 
