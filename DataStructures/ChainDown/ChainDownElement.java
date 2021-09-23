@@ -1,4 +1,4 @@
-package DataStructures.ChainUp;
+package DataStructures.ChainDown;
 
 /**
  * Element of an upwards chained list of Objects
@@ -6,25 +6,25 @@ package DataStructures.ChainUp;
  * @author Moritz Decker, Fabian Kessler
  * @version v1.0.0-2021-09-22
  */
-public class ChainUpElement<T>
+public class ChainDownElement<T>
 {
     private T obj;
-    private ChainUpElement<T> nextElem;
+    private ChainDownElement<T> nextElem;
 
 
-    public ChainUpElement()
+    public ChainDownElement()
     {
         this.obj = null;
         this.nextElem = null;
     }
 
-    public ChainUpElement(T obj)
+    public ChainDownElement(T obj)
     {
         this.obj = obj;
         this.nextElem = null;
     }
 
-    public ChainUpElement(T obj, ChainUpElement<T> nextElem)
+    public ChainDownElement(T obj, ChainDownElement<T> nextElem)
     {
         this.obj = obj;
         this.nextElem = nextElem;
@@ -39,12 +39,12 @@ public class ChainUpElement<T>
         return this.obj;
     }
 
-    public void setNext(ChainUpElement<T> nextElem)
+    public void setNext(ChainDownElement<T> nextElem)
     {
         this.nextElem = nextElem;
     }
 
-    public ChainUpElement<T> getNext()
+    public ChainDownElement<T> getNext()
     {
         return this.nextElem;
     }

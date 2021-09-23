@@ -1,4 +1,4 @@
-package DataStructures.ChainUp;
+package DataStructures.ChainDown;
 
 import Exceptions.ChainIndexOutOfBoundsException;
 import java.util.ArrayList;
@@ -12,12 +12,12 @@ import DataStructures.Chain.Chain;
  * @author Moritz Decker, Fabian Kessler
  * @version v1.0.0-2021-09-22
  */
-public class ChainUp<T> extends Chain<T>
+public class ChainDown<T> extends Chain<T>
 {
-    private ChainUpElement<T> firstElement;
-    private ChainUpElement<T> lastElement;
+    private ChainDownElement<T> firstElement;
+    private ChainDownElement<T> lastElement;
 
-    public ChainUp()
+    public ChainDown()
     {
         firstElement = null;
         lastElement = null;
@@ -33,7 +33,7 @@ public class ChainUp<T> extends Chain<T>
     @Override
     public void add(T obj)
     {
-        ChainUpElement<T> elem = new ChainUpElement<T>(obj);
+        ChainDownElement<T> elem = new ChainDownElement<T>(obj);
         
         if(firstElement == null) {
             firstElement = elem;
@@ -60,11 +60,11 @@ public class ChainUp<T> extends Chain<T>
             throw new ChainIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(length));
         }
         
-        ChainUpElement<T> elem = new ChainUpElement<T>(obj);
+        ChainDownElement<T> elem = new ChainDownElement<T>(obj);
         
         if(index == 0) {
             if(firstElement != null) {
-                ChainUpElement<T> formerFirstElement = firstElement;
+                ChainDownElement<T> formerFirstElement = firstElement;
                 elem.setNext(formerFirstElement);
             }
 
@@ -74,7 +74,7 @@ public class ChainUp<T> extends Chain<T>
                 lastElement = elem;
             }
         } else {
-            ChainUpElement<T> predecessorElem = getElem(index-1);
+            ChainDownElement<T> predecessorElem = getElem(index-1);
             predecessorElem.setNext(elem);
             elem.setNext(predecessorElem.getNext());
         }
@@ -96,10 +96,10 @@ public class ChainUp<T> extends Chain<T>
         }
 
         // can return null, which would also be correct
-        ChainUpElement<T> elemAfterIndex = getElem(index+1);
+        ChainDownElement<T> elemAfterIndex = getElem(index+1);
 
         if(index > 0) {
-            ChainUpElement<T> predecessorElem = getElem(index-1);
+            ChainDownElement<T> predecessorElem = getElem(index-1);
             predecessorElem.setNext(elemAfterIndex);
         }
 
@@ -114,14 +114,14 @@ public class ChainUp<T> extends Chain<T>
      * @return ObjecChainUpElement at spcified index or null if index out of bounds
      * @param index the index to get the element from
      */
-    private ChainUpElement<T> getElem(int index)
+    private ChainDownElement<T> getElem(int index)
     {
         //? Is this even a good idea?
         if(index < 0 || index > length) {
             return null;
         }
 
-        ChainUpElement<T> currentElement = firstElement;
+        ChainDownElement<T> currentElement = firstElement;
         
         for(int i = 0; i < index; i++) {
             if(currentElement != null) {
@@ -160,7 +160,7 @@ public class ChainUp<T> extends Chain<T>
     public T[] toArray()
     {
         ArrayList<T> list = new ArrayList<T>();
-        ChainUpElement<T> currentElement = firstElement;
+        ChainDownElement<T> currentElement = firstElement;
         
         for(int i = 0; i < getLength(); i++) {
             if(currentElement != null) {

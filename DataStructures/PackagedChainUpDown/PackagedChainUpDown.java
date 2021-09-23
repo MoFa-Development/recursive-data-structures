@@ -1,49 +1,36 @@
-package DataStructures.CataloguedChainUpDown;
+package DataStructures.PackagedChainUpDown;
 
 import DataStructures.Chain.Chain;
-import DataStructures.ChainUp.ChainUp;
+import DataStructures.ChainDown.ChainDown;
 import Exceptions.ChainIndexOutOfBoundsException;
 
 /**
  * @author Moritz Decker, Fabian Kessler
  * @version v1.0.1-2021-09-23
  */
-public class CataloguedChainUpDown<T> extends Chain<T>
+public class PackagedChainUpDown<T> extends Chain<T>
 {
-    private ChainUp<CataloguedChainUpDownElement<T>> catalogue;
-    private CataloguedChainUpDownElement<T> lastElement;
+    private ChainDown<ChainPackage<T>> packages;
+    private ChainPackage<T> lastPackage;
 
-    private int catalogueInterval;
+    private int defaultPackageSize;
 
-    public CataloguedChainUpDown()
+    public PackagedChainUpDown()
     {
-        this.catalogueInterval = 4;
-        this.catalogue = new ChainUp<CataloguedChainUpDownElement<T>>();
+        this.defaultPackageSize = 4;
+        this.packages = new ChainDown<ChainPackage<T>>();
     }
 
-    public CataloguedChainUpDown(int catalogInterval)
+    public PackagedChainUpDown(int catalogInterval)
     {
-        this.catalogueInterval = catalogInterval;
-        this.catalogue = new ChainUp<CataloguedChainUpDownElement<T>>();
+        this.defaultPackageSize = catalogInterval;
+        this.packages = new ChainDown<ChainPackage<T>>();
     }
 
 
     @Override
     public void add(T obj) {
-        CataloguedChainUpDownElement<T> elem = new CataloguedChainUpDownElement<T>();
-        
-        if(length == 0) {
-            this.catalogue.add(elem);
-        } else {
-            this.lastElement.setNext(elem);
-            this.lastElement = elem;
-        }
-        
-        if(catalogueInterval % length == 0) {
-            this.catalogue.add(elem);
-        }
-
-        length++;
+        // TODO implement
     }
 
     @Override

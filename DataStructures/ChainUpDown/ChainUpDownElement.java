@@ -1,27 +1,27 @@
-package DataStructures.CataloguedChainUpDown;
+package DataStructures.ChainUpDown;
 
-public class CataloguedChainUpDownElement<T> {
-    private CataloguedChainUpDownElement<T> prevElem;
-    private CataloguedChainUpDownElement<T> nextElem;
+public class ChainUpDownElement<T> {
+    private ChainUpDownElement<T> prevElem;
+    private ChainUpDownElement<T> nextElem;
 
     private T obj;
 
 
-    public CataloguedChainUpDownElement() {
+    public ChainUpDownElement() {
         this.prevElem = null;
         this.nextElem = null;
 
         this.obj = null;
     }
 
-    public CataloguedChainUpDownElement(T obj) {
+    public ChainUpDownElement(T obj) {
         this.prevElem = null;
         this.nextElem = null;
         
         this.obj = obj;
     }
 
-    public CataloguedChainUpDownElement(T obj, CataloguedChainUpDownElement<T> prev, CataloguedChainUpDownElement<T> next) {
+    public ChainUpDownElement(T obj, ChainUpDownElement<T> prev, ChainUpDownElement<T> next) {
         this.prevElem = prev;
         this.nextElem = next;
 
@@ -34,12 +34,12 @@ public class CataloguedChainUpDownElement<T> {
         return this.obj;
     }
 
-    public void setNext(CataloguedChainUpDownElement<T> nextElem)
+    public void setNext(ChainUpDownElement<T> nextElem)
     {
         this.nextElem = nextElem;
     }
 
-    public CataloguedChainUpDownElement<T> getNext()
+    public ChainUpDownElement<T> getNext()
     {
         return this.nextElem;
     }
@@ -49,12 +49,12 @@ public class CataloguedChainUpDownElement<T> {
         return this.nextElem == null;
     }
 
-    public void setPrev(CataloguedChainUpDownElement<T> prevElem)
+    public void setPrev(ChainUpDownElement<T> prevElem)
     {
         this.prevElem = prevElem;
     }
 
-    public CataloguedChainUpDownElement<T> getPrev()
+    public ChainUpDownElement<T> getPrev()
     {
         return this.prevElem;
     }
