@@ -23,7 +23,7 @@ public class Test
         chain.add("Hamburg");
         chain.add("Berlin");
         chain.add("Köln");
-        chain.add("München");
+        chain.add("München", 2);
 
         System.out.print("Length: ");
         System.out.println(chain.getLength());

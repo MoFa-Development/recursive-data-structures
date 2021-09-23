@@ -28,7 +28,8 @@ public class ChainUpDownElement<T> extends ChainDownElement<T>
     public void setNext(ChainUpDownElement<T> nextElem)
     {
         this.nextElem = nextElem;
-    } 
+        super.nextElem = nextElem;
+    }
 
     public ChainUpDownElement<T> getNext()
     {

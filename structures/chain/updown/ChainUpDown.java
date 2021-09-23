@@ -17,13 +17,16 @@ public class ChainUpDown<T> extends ChainDown<T>
         
         if(firstElement == null) {
             firstElement = elem;
+            super.firstElement = firstElement;
             lastElement = elem;
+            super.lastElement = lastElement;
         }
         else {
             lastElement.setNext(elem);
             elem.setPrev(lastElement);
 
             lastElement = elem;
+            super.lastElement = lastElement;
         }
 
         length++;
@@ -32,11 +35,44 @@ public class ChainUpDown<T> extends ChainDown<T>
     @Override
     public void add(T obj, int index) throws ChainIndexOutOfBoundsException
     {
-        if(index < 0 || index >= length) {
+        if(index < 0 || index > length) {
             throw indexOutOfBounds(index);
         }
 
-        // TODO implement
+        ChainUpDownElement<T> elem = new ChainUpDownElement<T>(obj);
+        
+        if(index == 0) {
+            if(firstElement != null) {
+                ChainUpDownElement<T> formerFirstElement = firstElement;
+                elem.setNext(formerFirstElement);
+                formerFirstElement.setPrev(elem);
+            }
+
+            firstElement = elem;
+            
+            if(length == 0) {
+                lastElement = elem;
+            }
+        }
+        else {
+            ChainUpDownElement<T> predecessorElement = getElement(index-1);
+            ChainUpDownElement<T> elementAtIndex = predecessorElement.getNext();
+
+            predecessorElement.setNext(elem);
+            elem.setPrev(predecessorElement);
+
+            if(elementAtIndex != null) {
+                elem.setNext(elementAtIndex);
+                elementAtIndex.setPrev(elem);
+            } else {
+                lastElement = elem;
+                super.lastElement = elem;
+            }
+
+            System.out.print("");
+        }
+
+        length++;
     }
 
     @Override
@@ -56,18 +92,7 @@ public class ChainUpDown<T> extends ChainDown<T>
         }
         
         if(index <= length/2) {
-            ChainUpDownElement<T> currentElement = firstElement;
-            
-            for(int i = 0; i < index; i++) {
-                if(currentElement != null) {
-                    currentElement = currentElement.nextElem;
-                }
-                else {
-                    return null;
-                }
-            }
-            
-            return currentElement;
+            return (ChainUpDownElement<T>) super.getElement(index);
         }
         else {
             ChainUpDownElement<T> currentElement = lastElement;
