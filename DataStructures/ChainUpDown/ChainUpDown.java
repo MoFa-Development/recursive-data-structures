@@ -1,9 +1,10 @@
 package DataStructures.ChainUpDown;
 
 import DataStructures.Chain.Chain;
+import DataStructures.ChainDown.ChainDown;
 import Exceptions.ChainIndexOutOfBoundsException;
 
-public class ChainUpDown<T> extends Chain<T>
+public class ChainUpDown<T> extends ChainDown<T>
 {
     private ChainUpDownElement<T> firstElement;
     private ChainUpDownElement<T> lastElement;
@@ -11,12 +12,6 @@ public class ChainUpDown<T> extends Chain<T>
     public ChainUpDown()
     {
         // TODO implement    
-    }
-
-    @Override
-    public void add(T obj) {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
@@ -36,23 +31,4 @@ public class ChainUpDown<T> extends Chain<T>
         // TODO Auto-generated method stub
         return null;
     }
-
-    @Override
-    public T getLast() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public T[] toArray() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-    
 }

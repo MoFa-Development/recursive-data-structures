@@ -1,7 +1,6 @@
 package DataStructures.PackagedChainUpDown;
 
 import DataStructures.Chain.Chain;
-import DataStructures.ChainDown.ChainDown;
 import DataStructures.ChainUpDown.ChainUpDown;
 import Exceptions.ChainIndexOutOfBoundsException;
 

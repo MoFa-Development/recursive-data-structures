@@ -91,7 +91,7 @@ public class ChainDown<T> extends Chain<T>
     @Override
     public void remove(int index) throws ChainIndexOutOfBoundsException
     {
-        if(index >= length || index < 0) {
+        if(index < 0 || index >= length) {
             throw new ChainIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(length));
         }
 
@@ -117,7 +117,7 @@ public class ChainDown<T> extends Chain<T>
     private ChainDownElement<T> getElem(int index)
     {
         //? Is this even a good idea?
-        if(index < 0 || index > length) {
+        if(index < 0 || index >= length) {
             return null;
         }
 
@@ -137,10 +137,15 @@ public class ChainDown<T> extends Chain<T>
     /**
      * @param index
      * @return  at given index
+     * @throws ChainIndexOutOfBoundsException
      */
     @Override
-    public T get(int index)
+    public T get(int index) throws ChainIndexOutOfBoundsException
     {
+        if(index < 0 || index >= length) {
+            throw new ChainIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(length));
+        }
+        
         return getElem(index).get();
     }
 
