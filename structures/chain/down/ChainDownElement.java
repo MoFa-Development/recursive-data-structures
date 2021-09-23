@@ -3,7 +3,7 @@ package structures.chain.down;
 import structures.chain.ChainElement;
 
 /**
- * Element of an upwards chained list of Objects
+ * Element of a downwards only chain
  * 
  * @author Moritz Decker, Fabian Kessler
  * @version v1.0.0-2021-09-22

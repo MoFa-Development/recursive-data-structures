@@ -5,6 +5,8 @@ import structures.chain.Chain;
 import structures.chain.updown.ChainUpDown;
 
 /**
+ * Double-linked Chain working with packages for faster read
+ * 
  * @author Moritz Decker, Fabian Kessler
  * @version v1.0.1-2021-09-23
  */

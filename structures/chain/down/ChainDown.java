@@ -8,7 +8,7 @@ import java.util.Arrays;
 import exceptions.ChainIndexOutOfBoundsException;
 
 /**
- * Upwards only chained list of s 
+ * Downwards only chain 
  * 
  * @author Moritz Decker, Fabian Kessler
  * @version v1.0.0-2021-09-22
@@ -18,11 +18,7 @@ public class ChainDown<T> extends Chain<T>
     protected ChainDownElement<T> firstElement;
     protected ChainDownElement<T> lastElement;
     
-    /**
-     * Append  at the end of the chain
-     * 
-     * @param obj  to store
-     */
+    
     @Override
     public void add(T obj)
     {
@@ -40,13 +36,6 @@ public class ChainDown<T> extends Chain<T>
         length++;
     }
 
-    /**
-     * Store  at specific index
-     * 
-     * @param obj  so store
-     * @param index index to store  at
-     * @throws ChainIndexOutOfBoundsException
-     */
     @Override
     public void add(T obj, int index) throws ChainIndexOutOfBoundsException
     {
@@ -77,12 +66,6 @@ public class ChainDown<T> extends Chain<T>
         length++;
     }
 
-    /**
-     * Remove  at given index from chain 
-     * 
-     * @param index
-     * @throws ChainIndexOutOfBoundsException
-     */
     @Override
     public void remove(int index) throws ChainIndexOutOfBoundsException
     {
@@ -130,11 +113,6 @@ public class ChainDown<T> extends Chain<T>
         return currentElement;
     }
 
-    /**
-     * @param index
-     * @return  at given index
-     * @throws ChainIndexOutOfBoundsException
-     */
     @Override
     public T get(int index) throws ChainIndexOutOfBoundsException
     {
@@ -151,17 +129,11 @@ public class ChainDown<T> extends Chain<T>
         return elem.get();
     }
 
-    /**
-     * @return at the end of the chain
-     */
     @Override
     public T getLast() {
         return lastElement.get();
     }
 
-    /**
-     * @return Array of stored objects
-     */
     @SuppressWarnings("unchecked")
     @Override
     public T[] toArray()
@@ -185,9 +157,6 @@ public class ChainDown<T> extends Chain<T>
         return array;
     }
 
-    /**
-     * @return String representation of the whole chain
-     */
     @Override
     public String toString()
     {

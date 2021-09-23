@@ -4,7 +4,12 @@ import java.util.ArrayList;
 
 import exceptions.ChainIndexOutOfBoundsException;
 import structures.chain.down.ChainDown;
-
+/**
+ * Double-linked chain
+ * 
+ * @author Moritz Decker 
+ * @version v1.0.1-2021-09-23
+ */
 public class ChainUpDown<T> extends ChainDown<T>
 {
     protected ChainUpDownElement<T> firstElement;
@@ -131,9 +136,6 @@ public class ChainUpDown<T> extends ChainDown<T>
         return this.lastElement.get();
     }
 
-    /**
-     * @return Array of stored objects
-     */
     @SuppressWarnings("unchecked")
     @Override
     public T[] toArray()

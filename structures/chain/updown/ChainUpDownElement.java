@@ -2,6 +2,12 @@ package structures.chain.updown;
 
 import structures.chain.down.ChainDownElement;
 
+/**
+ * Element of a double-linked chain
+ * 
+ * @author Moritz Decker 
+ * @version v1.0.1-2021-09-23
+ */
 public class ChainUpDownElement<T> extends ChainDownElement<T>
 {
     protected ChainUpDownElement<T> prevElem;
