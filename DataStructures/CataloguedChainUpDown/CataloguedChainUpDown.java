@@ -1,7 +1,7 @@
-package CataloguedChainUpDown;
+package DataStructures.CataloguedChainUpDown;
 
-import Chain.Chain;
-import ChainUp.ChainUp;
+import DataStructures.Chain.Chain;
+import DataStructures.ChainUp.ChainUp;
 import Exceptions.ChainIndexOutOfBoundsException;
 
 /**

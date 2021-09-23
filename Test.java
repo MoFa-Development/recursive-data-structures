@@ -1,4 +1,4 @@
-import ChainUp.ChainUp;
+import DataStructures.ChainUp.ChainUp;
 import Exceptions.ChainIndexOutOfBoundsException;
 
 /**

@@ -1,10 +1,10 @@
-package ChainUp;
+package DataStructures.ChainUp;
 
 import Exceptions.ChainIndexOutOfBoundsException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Chain.Chain;
+import DataStructures.Chain.Chain;
 
 /**
  * Upwards only chained list of s 

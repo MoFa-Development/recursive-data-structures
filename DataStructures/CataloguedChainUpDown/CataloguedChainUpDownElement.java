@@ -1,4 +1,4 @@
-package CataloguedChainUpDown;
+package DataStructures.CataloguedChainUpDown;
 
 public class CataloguedChainUpDownElement<T> {
     private CataloguedChainUpDownElement<T> prevElem;

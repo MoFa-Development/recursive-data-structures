@@ -1,4 +1,4 @@
-package ChainUp;
+package DataStructures.ChainUp;
 
 /**
  * Element of an upwards chained list of Objects

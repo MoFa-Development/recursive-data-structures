@@ -1,4 +1,4 @@
-package Chain;
+package DataStructures.Chain;
 
 import Exceptions.ChainIndexOutOfBoundsException;
 
