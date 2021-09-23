@@ -1,4 +1,4 @@
-import DataStructures.ChainUp.ChainUp;
+import DataStructures.ChainDown.ChainDown;
 import Exceptions.ChainIndexOutOfBoundsException;
 
 /**
@@ -9,7 +9,7 @@ import Exceptions.ChainIndexOutOfBoundsException;
  */
 public class Test
 {
-    ChainUp<String> chain;
+    ChainDown<String> chain;
     
     public static void main(String[] args) throws ChainIndexOutOfBoundsException {
         new Test();
@@ -17,7 +17,7 @@ public class Test
     
     public Test() throws ChainIndexOutOfBoundsException
     {
-        chain = new ChainUp<String>();
+        chain = new ChainDown<String>();
 
         chain.add("Bremen");
         chain.add("Hamburg");
