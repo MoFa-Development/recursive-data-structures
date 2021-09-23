@@ -2,6 +2,7 @@ package DataStructures.PackagedChainUpDown;
 
 import DataStructures.Chain.Chain;
 import DataStructures.ChainDown.ChainDown;
+import DataStructures.ChainUpDown.ChainUpDown;
 import Exceptions.ChainIndexOutOfBoundsException;
 
 /**
@@ -10,7 +11,7 @@ import Exceptions.ChainIndexOutOfBoundsException;
  */
 public class PackagedChainUpDown<T> extends Chain<T>
 {
-    private ChainDown<ChainPackage<T>> packages;
+    private ChainUpDown<ChainPackage<T>> packages;
     private ChainPackage<T> lastPackage;
 
     private int defaultPackageSize;
@@ -18,13 +19,13 @@ public class PackagedChainUpDown<T> extends Chain<T>
     public PackagedChainUpDown()
     {
         this.defaultPackageSize = 4;
-        this.packages = new ChainDown<ChainPackage<T>>();
+        this.packages = new ChainUpDown<ChainPackage<T>>();
     }
 
     public PackagedChainUpDown(int catalogInterval)
     {
         this.defaultPackageSize = catalogInterval;
-        this.packages = new ChainDown<ChainPackage<T>>();
+        this.packages = new ChainUpDown<ChainPackage<T>>();
     }
 
 
