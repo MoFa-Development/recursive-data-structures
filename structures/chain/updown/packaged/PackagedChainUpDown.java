@@ -10,10 +10,10 @@ import structures.chain.updown.ChainUpDown;
  */
 public class PackagedChainUpDown<T> extends Chain<T>
 {
-    private ChainUpDown<ChainPackage<T>> packages;
-    private ChainPackage<T> lastPackage;
+    protected ChainUpDown<ChainPackage<T>> packages;
+    protected ChainPackage<T> lastPackage;
 
-    private int defaultPackageSize;
+    protected int defaultPackageSize;
 
     public PackagedChainUpDown()
     {

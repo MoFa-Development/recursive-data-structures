@@ -39,7 +39,8 @@ public class ChainDown<T> extends Chain<T>
         if(firstElement == null) {
             firstElement = elem;
             lastElement = elem;
-        } else {
+        }
+        else {
             lastElement.setNext(elem);
             lastElement = elem;
         }
@@ -58,7 +59,7 @@ public class ChainDown<T> extends Chain<T>
     public void add(T obj, int index) throws ChainIndexOutOfBoundsException
     {
         if(index > length || index < 0) {
-            throw new ChainIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(length));
+            throw indexOutOfBounds(index);
         }
         
         ChainDownElement<T> elem = new ChainDownElement<T>(obj);
@@ -74,7 +75,8 @@ public class ChainDown<T> extends Chain<T>
             if(length == 0) {
                 lastElement = elem;
             }
-        } else {
+        }
+        else {
             ChainDownElement<T> predecessorElem = getElement(index-1);
             predecessorElem.setNext(elem);
             elem.setNext(predecessorElem.getNext());
@@ -93,7 +95,7 @@ public class ChainDown<T> extends Chain<T>
     public void remove(int index) throws ChainIndexOutOfBoundsException
     {
         if(index < 0 || index >= length) {
-            throw new ChainIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(length));
+            throw indexOutOfBounds(index);
         }
 
         // can return null, which would also be correct
@@ -127,7 +129,8 @@ public class ChainDown<T> extends Chain<T>
         for(int i = 0; i < index; i++) {
             if(currentElement != null) {
                 currentElement = currentElement.getNext();
-            } else {
+            }
+            else {
                 return null;
             }
         }
@@ -144,10 +147,16 @@ public class ChainDown<T> extends Chain<T>
     public T get(int index) throws ChainIndexOutOfBoundsException
     {
         if(index < 0 || index >= length) {
-            throw new ChainIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(length));
+            throw indexOutOfBounds(index);
         }
         
-        return getElement(index).get();
+        ChainDownElement<T> elem = getElement(index);
+        
+        if(elem == null) {
+            throw indexOutOfBounds(index);
+        }
+
+        return elem.get();
     }
 
     /**
@@ -173,7 +182,8 @@ public class ChainDown<T> extends Chain<T>
                 list.add(currentElement.get());
                 
                 currentElement = currentElement.getNext();
-            } else {
+            }
+            else {
                 return null;
             }
         }

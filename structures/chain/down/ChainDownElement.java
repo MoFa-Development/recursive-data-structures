@@ -1,14 +1,15 @@
 package structures.chain.down;
 
+import structures.chain.ChainElement;
+
 /**
  * Element of an upwards chained list of Objects
  * 
  * @author Moritz Decker, Fabian Kessler
  * @version v1.0.0-2021-09-22
  */
-public class ChainDownElement<T>
+public class ChainDownElement<T> extends ChainElement<T>
 {
-    protected T obj;
     protected ChainDownElement<T> nextElem;
 
 
@@ -30,10 +31,7 @@ public class ChainDownElement<T>
         this.nextElem = nextElem;
     }
 
-    /**
-     * Returns the element's object
-     * 
-     */
+    
     public T get()
     {
         return this.obj;

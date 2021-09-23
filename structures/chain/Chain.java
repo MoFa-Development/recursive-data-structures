@@ -24,4 +24,10 @@ public abstract class Chain<T> {
     public abstract T[] toArray();
     
     public abstract String toString();
+
+
+    protected ChainIndexOutOfBoundsException indexOutOfBounds(int index)
+    {
+        return new ChainIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(length));
+    }
 }

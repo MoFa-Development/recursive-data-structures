@@ -4,7 +4,8 @@ import structures.chain.down.ChainDownElement;
 
 public class ChainUpDownElement<T> extends ChainDownElement<T>
 {
-    private ChainUpDownElement<T> prevElem;
+    protected ChainUpDownElement<T> prevElem;
+    protected ChainUpDownElement<T> nextElem;
 
     public ChainUpDownElement() {
         super();
@@ -19,6 +20,12 @@ public class ChainUpDownElement<T> extends ChainDownElement<T>
     public ChainUpDownElement(T obj, ChainUpDownElement<T> prevElem, ChainUpDownElement<T> nextElem) {
         super(obj, nextElem);
         this.prevElem = prevElem;
+    }
+
+    @Override
+    public ChainUpDownElement<T> getNext()
+    {
+        return this.nextElem;
     }
 
     public void setPrev(ChainUpDownElement<T> prevElem)
