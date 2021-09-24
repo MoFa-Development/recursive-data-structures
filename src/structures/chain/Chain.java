@@ -68,7 +68,8 @@ public abstract class Chain<E> implements Collection<E>
     }
 
     @Override
-    public boolean addAll(Collection<? extends E> collection) {
+    public boolean addAll(Collection<? extends E> collection)
+    {
         for(E elem: collection) {
             add(elem);
         }
@@ -76,12 +77,14 @@ public abstract class Chain<E> implements Collection<E>
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty()
+    {
         return length == 0;
     }
 
     @Override
-    public boolean remove(Object o) {
+    public boolean remove(Object o)
+    {
         int index = 0;
 
         for(E elem: this) {
@@ -99,7 +102,8 @@ public abstract class Chain<E> implements Collection<E>
     }
 
     @Override
-    public boolean contains(Object obj) {
+    public boolean contains(Object obj)
+    {
         for(E elem: this) {
             if(elem == obj) {
                 return true;
@@ -109,8 +113,8 @@ public abstract class Chain<E> implements Collection<E>
     }
 
     @Override
-    public boolean containsAll(Collection<?> c) {
-        
+    public boolean containsAll(Collection<?> c)
+    {
         for(Object o: c) {
             if(!this.contains(o)) {
                 return false;
@@ -121,8 +125,8 @@ public abstract class Chain<E> implements Collection<E>
     }
 
     @Override
-    public boolean removeAll(Collection<?> c) {
-
+    public boolean removeAll(Collection<?> c)
+    {
         for(Object elem: c) {
             boolean success = remove(elem);
             
@@ -135,8 +139,8 @@ public abstract class Chain<E> implements Collection<E>
     }
 
     @Override
-    public boolean retainAll(Collection<?> c) {
-        
+    public boolean retainAll(Collection<?> c)
+    {
         int index = 0;
 
         for(E elem: this) {

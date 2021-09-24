@@ -9,17 +9,20 @@ public class ChainIterator<E> implements Iterator<E> {
 
     private ChainDownElement<E> currentElement;
 
-    public ChainIterator(ChainDownElement<E> beginElem) {
+    public ChainIterator(ChainDownElement<E> beginElem)
+    {
         this.currentElement = beginElem;
     }
 
     @Override
-    public boolean hasNext() {
+    public boolean hasNext()
+    {
         return currentElement != null;
     }
 
     @Override
-    public E next() {
+    public E next()
+    {
         if(currentElement == null) {
             throw new NoSuchElementException("Iterated over end of the chain.");
         }

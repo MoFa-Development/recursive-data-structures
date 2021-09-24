@@ -21,24 +21,29 @@ public class ChainDown<E> extends Chain<E>
     private ChainDownElement<E> lastElement;
 
 
-    public ChainElement<E> getFirstElement() {
+    public ChainElement<E> getFirstElement()
+    {
         return firstElement;
     }
 
-    public ChainElement<E> getLastElement() {
+    public ChainElement<E> getLastElement()
+    {
         return lastElement;
     }
 
-    public void setFirstElement(ChainElement<E> firstElement) {
+    public void setFirstElement(ChainElement<E> firstElement)
+    {
         this.firstElement = (ChainDownElement<E>) firstElement;
     }
 
-    public void setLastElement(ChainElement<E> lastElement) {
+    public void setLastElement(ChainElement<E> lastElement)
+    {
         this.lastElement = (ChainDownElement<E>) lastElement;
     }
 
     @Override
-    public void clear() {
+    public void clear()
+    {
         setFirstElement(null);
         setLastElement(null);
     }
@@ -160,7 +165,8 @@ public class ChainDown<E> extends Chain<E>
     }
 
     @Override
-    public E getLast() {
+    public E getLast()
+    {
         return getLastElement().get();
     }
 
@@ -192,13 +198,15 @@ public class ChainDown<E> extends Chain<E>
     }
 
     @Override
-    public ChainIterator<E> iterator() {
+    public ChainIterator<E> iterator()
+    {
         return new ChainIterator<>((ChainDownElement<E>) this.getFirstElement());
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> T[] toArray(T[] a) {
+    public <T> T[] toArray(T[] a)
+    {
         return (T[]) toArray();
     }
 }

@@ -18,22 +18,26 @@ public class ChainUpDown<E> extends ChainDown<E>
 
 
     @Override
-    public ChainElement<E> getFirstElement() {
+    public ChainElement<E> getFirstElement()
+    {
         return firstElement;
     }
 
     @Override
-    public ChainElement<E> getLastElement() {
+    public ChainElement<E> getLastElement()
+    {
         return lastElement;
     }
 
     @Override
-    public void setFirstElement(ChainElement<E> firstElement) {
+    public void setFirstElement(ChainElement<E> firstElement)
+    {
         this.firstElement = (ChainUpDownElement<E>) firstElement;
     }
 
     @Override
-    public void setLastElement(ChainElement<E> lastElement) {
+    public void setLastElement(ChainElement<E> lastElement)
+    {
         this.lastElement = (ChainUpDownElement<E>) lastElement;
     }
 
@@ -153,7 +157,8 @@ public class ChainUpDown<E> extends ChainDown<E>
     }
 
     @Override
-    public E getLast() {
+    public E getLast()
+    {
         return getLastElement().get();
     }
 

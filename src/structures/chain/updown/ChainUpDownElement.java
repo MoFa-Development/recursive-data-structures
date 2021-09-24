@@ -13,12 +13,14 @@ public class ChainUpDownElement<E> extends ChainDownElement<E>
     private ChainUpDownElement<E> prevElem;
     private ChainUpDownElement<E> nextElem;
 
-    public ChainUpDownElement() {
+    public ChainUpDownElement()
+    {
         super(null);
         this.prevElem = null;
     }
 
-    public ChainUpDownElement(E obj) {
+    public ChainUpDownElement(E obj)
+    {
         super(obj);
         this.prevElem = null;
     }

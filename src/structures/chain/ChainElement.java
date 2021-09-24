@@ -9,14 +9,16 @@ package structures.chain;
 public abstract class ChainElement<E> {
     protected E obj;
 
-    protected ChainElement(E obj) {
+    protected ChainElement(E obj)
+    {
         this.obj = obj;
     }
 
     /**
      * @return data stored in element
      */
-    public E get() {
+    public E get()
+    {
         return obj;
     }
 }

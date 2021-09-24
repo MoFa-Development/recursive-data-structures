@@ -14,86 +14,72 @@ import structures.chain.Chain;
 public class PackagedChainUpDown<E> extends Chain<E>
 {
     @Override
-    public boolean add(E elem) {
+    public boolean add(E e)
+    {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public void clear() {
+    public void clear()
+    {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public boolean contains(Object o) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public Iterator<E> iterator() {
+    public Iterator<E> iterator()
+    {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public boolean removeAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public Object[] toArray() {
+    public Object[] toArray()
+    {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public <T> T[] toArray(T[] a) {
+    public <T> T[] toArray(T[] a)
+    {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public boolean add(E obj, int index) throws ChainIndexOutOfBoundsException {
+    public boolean add(E obj, int index) throws ChainIndexOutOfBoundsException
+    {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public boolean remove(int index) throws ChainIndexOutOfBoundsException {
+    public boolean remove(int index) throws ChainIndexOutOfBoundsException
+    {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public E get(int index) throws ChainIndexOutOfBoundsException {
+    public E get(int index) throws ChainIndexOutOfBoundsException
+    {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public E getLast() {
+    public E getLast()
+    {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         // TODO Auto-generated method stub
-        return "";
+        return null;
     }
 }
