@@ -99,6 +99,16 @@ public abstract class Chain<E> implements Collection<E>
     }
 
     @Override
+    public boolean contains(Object obj) {
+        for(E elem: this) {
+            if(elem == obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public boolean containsAll(Collection<?> c) {
         
         for(Object o: c) {
@@ -133,6 +143,7 @@ public abstract class Chain<E> implements Collection<E>
             if(!c.contains(elem)) {
                 try {
                     remove(index);
+                    index--;
                 } catch (ChainIndexOutOfBoundsException e) {
                     return false;
                 }

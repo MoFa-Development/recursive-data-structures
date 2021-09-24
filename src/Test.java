@@ -35,12 +35,12 @@ public class Test
 
         chainB = new ChainUpDown<>();
 
-        chainB.add("London");
+        chainB.add("Bremen");
         chainB.add("Manchester");
         chainB.add("Plymouth");
 
 
-        chainA.addAll(chainB);
+        chainA.retainAll(chainB);
 
 
         System.out.print(chainA);

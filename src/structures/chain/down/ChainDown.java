@@ -192,11 +192,6 @@ public class ChainDown<E> extends Chain<E>
     }
 
     @Override
-    public boolean contains(Object obj) {
-        return false;
-    }
-
-    @Override
     public ChainIterator<E> iterator() {
         return new ChainIterator<>((ChainDownElement<E>) this.getFirstElement());
     }
