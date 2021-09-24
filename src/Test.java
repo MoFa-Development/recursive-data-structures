@@ -4,7 +4,7 @@ import structures.chain.updown.ChainUpDown;
 /**
  * Test class
  * 
- * @author Moritz Decker 
+ * @author Moritz Decker, Fabian Kessler
  * @version v1.0.0-2021-09-22
  */
 public class Test

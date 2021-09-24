@@ -17,15 +17,16 @@ public class PackagedChainUpDown<T> extends Chain<T>
 
     protected int defaultPackageSize;
 
+    
     public PackagedChainUpDown()
     {
         this.defaultPackageSize = 4;
         this.packages = new ChainUpDown<ChainPackage<T>>();
     }
 
-    public PackagedChainUpDown(int catalogInterval)
+    public PackagedChainUpDown(int defaultPackageSize)
     {
-        this.defaultPackageSize = catalogInterval;
+        this.defaultPackageSize = defaultPackageSize;
         this.packages = new ChainUpDown<ChainPackage<T>>();
     }
 
