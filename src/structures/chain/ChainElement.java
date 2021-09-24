@@ -9,7 +9,7 @@ package structures.chain;
 public abstract class ChainElement<E> {
     protected E obj;
 
-    public ChainElement(E obj) {
+    protected ChainElement(E obj) {
         this.obj = obj;
     }
 

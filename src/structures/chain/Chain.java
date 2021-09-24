@@ -66,4 +66,80 @@ public abstract class Chain<E> implements Collection<E>
     {
         return new ChainIndexOutOfBoundsException("Index " + Integer.toString(index) + " out of bounds for length " + Integer.toString(length));
     }
+
+    @Override
+    public boolean addAll(Collection<? extends E> collection) {
+        for(E elem: collection) {
+            add(elem);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        int index = 0;
+
+        for(E elem: this) {
+            if(o == elem) {
+                try {
+                    remove(index);
+                } catch (ChainIndexOutOfBoundsException e) {
+                    return false;
+                }
+            }
+            index++;
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        
+        for(Object o: c) {
+            if(!this.contains(o)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+
+        for(Object elem: c) {
+            boolean success = remove(elem);
+            
+            if(!success) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        
+        int index = 0;
+
+        for(E elem: this) {
+            if(!c.contains(elem)) {
+                try {
+                    remove(index);
+                } catch (ChainIndexOutOfBoundsException e) {
+                    return false;
+                }
+            }
+            index++;
+        }
+
+        return true;
+    }
 }
