@@ -1,9 +1,12 @@
 package structures.chain.down;
 
 import structures.chain.Chain;
+import structures.chain.ChainElement;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 
 import exceptions.ChainIndexOutOfBoundsException;
 
@@ -13,93 +16,121 @@ import exceptions.ChainIndexOutOfBoundsException;
  * @author Moritz Decker, Fabian Kessler
  * @version v1.0.0-2021-09-22
  */
-public class ChainDown<T> extends Chain<T>
+public class ChainDown<E> extends Chain<E>
 {
-    protected ChainDownElement<T> firstElement;
-    protected ChainDownElement<T> lastElement;
-    
-    
-    @Override
-    public void add(T obj)
-    {
-        ChainDownElement<T> elem = new ChainDownElement<T>(obj);
-        
-        if(firstElement == null) {
-            firstElement = elem;
-            lastElement = elem;
-        }
-        else {
-            lastElement.setNext(elem);
-            lastElement = elem;
-        }
+    private ChainDownElement<E> firstElement;
+    private ChainDownElement<E> lastElement;
 
-        length++;
+
+    public ChainElement<E> getFirstElement() {
+        return firstElement;
+    }
+
+    public ChainElement<E> getLastElement() {
+        return lastElement;
+    }
+
+    public void setFirstElement(ChainElement<E> firstElement) {
+        this.firstElement = (ChainDownElement<E>) firstElement;
+    }
+
+    public void setLastElement(ChainElement<E> lastElement) {
+        this.lastElement = (ChainDownElement<E>) lastElement;
     }
 
     @Override
-    public void add(T obj, int index) throws ChainIndexOutOfBoundsException
+    public void clear() {
+        setFirstElement(null);
+        setLastElement(null);
+    }
+    
+    @Override
+    public boolean add(E obj)
+    {
+        ChainDownElement<E> elem = new ChainDownElement<>(obj);
+        
+        if(getFirstElement() == null) {
+            setFirstElement(elem);
+            setLastElement(elem);
+        }
+        else {
+            ((ChainDownElement<E>) getLastElement()).setNext(elem);
+            setLastElement(elem);
+        }
+
+        length++;
+
+        return true;
+    }
+
+    @Override
+    public boolean add(E obj, int index) throws ChainIndexOutOfBoundsException
     {
         if(index > length || index < 0) {
             throw indexOutOfBounds(index);
         }
         
-        ChainDownElement<T> elem = new ChainDownElement<T>(obj);
+        ChainDownElement<E> elem = new ChainDownElement<>(obj);
         
         if(index == 0) {
-            if(firstElement != null) {
-                ChainDownElement<T> formerFirstElement = firstElement;
+            if(getFirstElement() != null) {
+                ChainDownElement<E> formerFirstElement = (ChainDownElement<E>) getFirstElement();
                 elem.setNext(formerFirstElement);
             }
 
-            firstElement = elem;
+            setFirstElement(elem);
             
             if(length == 0) {
-                lastElement = elem;
+                setLastElement(elem);
             }
         }
         else {
-            ChainDownElement<T> predecessorElem = getElement(index-1);
+            ChainDownElement<E> predecessorElem = getElement(index-1);
             predecessorElem.setNext(elem);
             elem.setNext(predecessorElem.getNext());
         }
 
         length++;
+    
+        return true;
     }
 
     @Override
-    public void remove(int index) throws ChainIndexOutOfBoundsException
+    public boolean remove(int index) throws ChainIndexOutOfBoundsException
     {
         if(index < 0 || index >= length) {
             throw indexOutOfBounds(index);
         }
 
         // can return null, which would also be correct
-        ChainDownElement<T> elemAfterIndex = getElement(index+1);
+        ChainDownElement<E> elemAfterIndex = getElement(index+1);
 
         if(index > 0) {
-            ChainDownElement<T> predecessorElem = getElement(index-1);
+            ChainDownElement<E> predecessorElem = getElement(index-1);
             predecessorElem.setNext(elemAfterIndex);
         }
 
         if(index == 0) {
-            firstElement = elemAfterIndex; 
+            setFirstElement(elemAfterIndex); 
         }
 
         length--;
+
+        return true;
     }
 
     /**
      * @return ObjecChainUpElement at spcified index or null if index out of bounds
      * @param index the index to get the element from
      */
-    protected ChainDownElement<T> getElement(int index)
+    protected ChainDownElement<E> getElement(int index)
     {
         //? Is this even a good idea?
         if(index < 0 || index >= length) {
             return null;
         }
 
-        ChainDownElement<T> currentElement = firstElement;
+        ChainDownElement<E> currentElement = (ChainDownElement<E>) getFirstElement();
         
         for(int i = 0; i < index; i++) {
             if(currentElement != null) {
@@ -114,13 +145,13 @@ public class ChainDown<T> extends Chain<T>
     }
 
     @Override
-    public T get(int index) throws ChainIndexOutOfBoundsException
+    public E get(int index) throws ChainIndexOutOfBoundsException
     {
         if(index < 0 || index >= length) {
             throw indexOutOfBounds(index);
         }
         
-        ChainDownElement<T> elem = getElement(index);
+        ChainDownElement<E> elem = getElement(index);
         
         if(elem == null) {
             throw indexOutOfBounds(index);
@@ -130,18 +161,18 @@ public class ChainDown<T> extends Chain<T>
     }
 
     @Override
-    public T getLast() {
-        return lastElement.get();
+    public E getLast() {
+        return getLastElement().get();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public T[] toArray()
+    public E[] toArray()
     {
-        ArrayList<T> list = new ArrayList<T>();
-        ChainDownElement<T> currentElement = firstElement;
+        ArrayList<E> list = new ArrayList<>();
+        ChainDownElement<E> currentElement = (ChainDownElement<E>) getFirstElement();
         
-        for(int i = 0; i < getLength(); i++) {
+        for(int i = 0; i < size(); i++) {
             if(currentElement != null) {
                 list.add(currentElement.get());
                 
@@ -152,9 +183,7 @@ public class ChainDown<T> extends Chain<T>
             }
         }
         
-        T[] array = (T[]) list.toArray();
-
-        return array;
+        return (E[]) list.toArray();
     }
 
     @Override
@@ -163,4 +192,57 @@ public class ChainDown<T> extends Chain<T>
         return Arrays.toString(toArray());
     }
 
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

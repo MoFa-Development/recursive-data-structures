@@ -8,7 +8,7 @@ import structures.chain.updown.ChainUpDownElement;
  * @author Moritz Decker 
  * @version v1.0.1-2021-09-23
  */
-public class ChainPackage<T> extends ChainUpDownElement<T>
+public class ChainPackage<E> extends ChainUpDownElement<E>
 {
     
 }

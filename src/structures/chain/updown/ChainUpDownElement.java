@@ -8,22 +8,22 @@ import structures.chain.down.ChainDownElement;
  * @author Moritz Decker 
  * @version v1.0.1-2021-09-23
  */
-public class ChainUpDownElement<T> extends ChainDownElement<T>
+public class ChainUpDownElement<E> extends ChainDownElement<E>
 {
-    protected ChainUpDownElement<T> prevElem;
-    protected ChainUpDownElement<T> nextElem;
+    private ChainUpDownElement<E> prevElem;
+    private ChainUpDownElement<E> nextElem;
 
     public ChainUpDownElement() {
         super(null);
         this.prevElem = null;
     }
 
-    public ChainUpDownElement(T obj) {
+    public ChainUpDownElement(E obj) {
         super(obj);
         this.prevElem = null;
     }
 
-    public ChainUpDownElement(T obj, ChainUpDownElement<T> prevElem, ChainUpDownElement<T> nextElem)
+    public ChainUpDownElement(E obj, ChainUpDownElement<E> prevElem, ChainUpDownElement<E> nextElem)
     {
         super(obj);
         this.prevElem = prevElem;
@@ -31,29 +31,29 @@ public class ChainUpDownElement<T> extends ChainDownElement<T>
     }
 
 
-    public void setNext(ChainUpDownElement<T> nextElem)
+    public void setNext(ChainUpDownElement<E> nextElem)
     {
         this.nextElem = nextElem;
-        super.nextElem = nextElem;
     }
 
-    public ChainUpDownElement<T> getNext()
+    @Override
+    public ChainUpDownElement<E> getNext()
     {
         return this.nextElem;
     }
 
-    public void setPrev(ChainUpDownElement<T> prevElem)
+    public void setPrev(ChainUpDownElement<E> prevElem)
     {
         this.prevElem = prevElem;
     }
 
-    public ChainUpDownElement<T> getPrev()
+    public ChainUpDownElement<E> getPrev()
     {
         return this.prevElem;
     }
 
     public boolean hasPrev()
     {
-        return this.prevElem != null;
+        return getPrev() != null;
     }
 }

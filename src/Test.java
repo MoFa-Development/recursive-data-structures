@@ -28,11 +28,11 @@ public class Test
         chain.remove(2);
 
         System.out.print("Length: ");
-        System.out.println(chain.getLength());
+        System.out.println(chain.size());
 
         System.out.println(chain.toString());
         
-        for(int i = 0; i < chain.getLength(); i++) {
+        for(int i = 0; i < chain.size(); i++) {
             String str = chain.get(i);
             System.out.println(Integer.toString(i) + ": " + str);
         }

@@ -8,9 +8,9 @@ import structures.chain.ChainElement;
  * @author Moritz Decker, Fabian Kessler
  * @version v1.0.0-2021-09-22
  */
-public class ChainDownElement<T> extends ChainElement<T>
+public class ChainDownElement<E> extends ChainElement<E>
 {
-    protected ChainDownElement<T> nextElem;
+    private ChainDownElement<E> nextElem;
 
 
     public ChainDownElement()
@@ -19,31 +19,31 @@ public class ChainDownElement<T> extends ChainElement<T>
         this.nextElem = null;
     }
 
-    public ChainDownElement(T obj)
+    public ChainDownElement(E obj)
     {
         super(obj);
         this.nextElem = null;
     }
 
-    public ChainDownElement(T obj, ChainDownElement<T> nextElem)
+    public ChainDownElement(E obj, ChainDownElement<E> nextElem)
     {
         super(obj);
         this.nextElem = nextElem;
     }
 
 
-    public void setNext(ChainDownElement<T> nextElem)
+    public void setNext(ChainDownElement<E> nextElem)
     {
         this.nextElem = nextElem;
     }
 
-    public ChainDownElement<T> getNext()
+    public ChainDownElement<E> getNext()
     {
         return this.nextElem;
     }
 
     public boolean hasNext()
     {
-        return this.nextElem != null;
+        return getNext() != null;
     }
 }

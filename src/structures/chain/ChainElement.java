@@ -6,17 +6,17 @@ package structures.chain;
  * @author Moritz Decker 
  * @version v1.0.1-2021-09-23
  */
-public abstract class ChainElement<T> {
-    protected T obj;
+public abstract class ChainElement<E> {
+    protected E obj;
 
-    public ChainElement(T obj) {
+    public ChainElement(E obj) {
         this.obj = obj;
     }
 
     /**
      * @return data stored in element
      */
-    public T get() {
+    public E get() {
         return obj;
     }
 }
