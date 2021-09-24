@@ -1,3 +1,12 @@
 # Custom Chained Structures
 
-Some custom implementations of linked data structures, developed for educational purposes in Computer Science class 
+A collection of custom implementations of linked data structures. Developed for educational purposes in Computer Science class. 
+
+## Build
+
+For GNU/Linux systems there's the `build.sh` which generates the javadoc documentation and a Jar file that launches the Test. Run:
+
+```bash
+./build.sh
+```
+
