@@ -1,6 +1,5 @@
 package structures.chain.updown.packaged;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 import exceptions.ChainIndexOutOfBoundsException;
@@ -80,6 +79,6 @@ public class PackagedChainUpDown<E> extends Chain<E>
     public String toString()
     {
         // TODO Auto-generated method stub
-        return null;
+        return "";
     }
 }
