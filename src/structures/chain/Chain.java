@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 import exceptions.ChainIndexOutOfBoundsException;
-import structures.chain.util.ChainDownIterator;
 
 /**
  * Abstract chain
@@ -138,8 +137,12 @@ public abstract class Chain<E> extends AbstractList<E>
             return false;
         if (getClass() != obj.getClass())
             return false;
-        
+
         Chain<E> other = (Chain<E>) obj;
+        
+        if(length != other.length)
+            return false;
+
         Iterator<E> otherIter = other.iterator();
         Iterator<E> iter = this.iterator();
 
@@ -148,7 +151,7 @@ public abstract class Chain<E> extends AbstractList<E>
                 return false;
             }
         }
-        
+
         return true;
     }
 }

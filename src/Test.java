@@ -38,7 +38,6 @@ public class Test
         chainB.add("Hamburg");
         chainB.add("Berlin");
         chainB.add("Köln");
-        chainB.add("München");
 
         System.out.print(chainB);
         System.out.print(" - (");

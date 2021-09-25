@@ -13,7 +13,7 @@ import structures.chain.util.ChainUpDownListIterator;
 
 public class PackagedChainUpDown<E> extends Chain<E>
 {
-    private static final int DEFAULT_PACKAGE_SIZE = 2;
+    private static final int DEFAULT_PACKAGE_SIZE = 8;
     
     protected ChainUpDown<PackageUpDown<E>> packages;
     private int packageSize;
