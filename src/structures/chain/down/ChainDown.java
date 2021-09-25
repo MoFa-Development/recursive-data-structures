@@ -5,6 +5,7 @@ import structures.chain.ChainElement;
 import structures.chain.util.ChainDownIterator;
 
 import java.util.List;
+import java.util.ListIterator;
 
 import exceptions.ChainIndexOutOfBoundsException;
 
@@ -121,7 +122,7 @@ public class ChainDown<E> extends Chain<E>
     }
 
     @Override
-    protected ChainDownElement<E> getElem(int index)
+    public ChainDownElement<E> getElem(int index)
     {
         //? Is this even a good idea?
         if(index < 0 || index >= length) {
@@ -159,9 +160,14 @@ public class ChainDown<E> extends Chain<E>
     }
 
     @Override
-    public ChainDownIterator<E> listIterator()
+    public ChainDownIterator<E> iterator()
     {
-        return new ChainDownIterator<>(this, (ChainDownElement<E>) this.getFirstElem());
+        return new ChainDownIterator<>((ChainDownElement<E>) this.getFirstElem());
+    }
+
+    @Override
+    public ListIterator<E> listIterator() {
+        return null;
     }
 
     @Override

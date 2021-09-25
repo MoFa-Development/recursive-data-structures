@@ -2,10 +2,12 @@ package structures.chain;
 
 import java.util.AbstractList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 import exceptions.ChainIndexOutOfBoundsException;
+import structures.chain.util.ChainDownIterator;
 
 /**
  * Abstract chain
@@ -42,7 +44,7 @@ public abstract class Chain<E> extends AbstractList<E>
      * @param index 
      * @return element at spcified index or null if index out of bounds
      */
-    protected abstract ChainElement<E> getElem(int index);
+    public abstract ChainElement<E> getElem(int index);
 
     /**
      * @return data at the beginning of the chain
@@ -118,4 +120,35 @@ public abstract class Chain<E> extends AbstractList<E>
 
     @Override
     public abstract List<E> subList(int fromIndex, int toIndex);
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + length;
+        return result;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        
+        Chain<E> other = (Chain<E>) obj;
+        Iterator<E> otherIter = other.iterator();
+        Iterator<E> iter = this.iterator();
+
+        while(otherIter.hasNext() && iter.hasNext()) {
+            if(otherIter.next() != iter.next()) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
 }

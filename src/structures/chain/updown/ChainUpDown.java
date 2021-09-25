@@ -128,7 +128,7 @@ public class ChainUpDown<E> extends ChainDown<E>
     }
 
     @Override
-    protected ChainUpDownElement<E> getElem(int index)
+    public ChainUpDownElement<E> getElem(int index)
     {
         if(index < 0 || index >= length) {
             return null;

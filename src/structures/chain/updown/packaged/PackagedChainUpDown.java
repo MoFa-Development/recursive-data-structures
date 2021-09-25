@@ -8,7 +8,7 @@ import structures.chain.ChainElement;
 import structures.chain.down.ChainDownElement;
 import structures.chain.updown.ChainUpDown;
 import structures.chain.updown.ChainUpDownElement;
-import structures.chain.util.ChainDownIterator;
+import structures.chain.util.ChainUpDownListIterator;
 
 
 public class PackagedChainUpDown<E> extends Chain<E>
@@ -140,9 +140,9 @@ public class PackagedChainUpDown<E> extends Chain<E>
     }
 
     @Override
-    public ChainDownIterator<E> listIterator()
+    public ChainUpDownListIterator<E> listIterator()
     {
-        return new ChainDownIterator<>(this, (ChainDownElement<E>) getFirstPackage().getFirstElem());
+        return new ChainUpDownListIterator<>(this, (ChainDownElement<E>) getFirstPackage().getFirstElem());
     }
 
     @Override
@@ -153,7 +153,7 @@ public class PackagedChainUpDown<E> extends Chain<E>
     }
 
     @Override
-    protected ChainElement<E> getElem(int index) {
+    public ChainElement<E> getElem(int index) {
         int i = 0;
 
         for(PackageUpDown<E> pkg: packages) {
