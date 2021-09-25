@@ -3,6 +3,8 @@ package structures.chain.updown;
 import exceptions.ChainIndexOutOfBoundsException;
 import structures.chain.ChainElement;
 import structures.chain.down.ChainDown;
+import structures.chain.down.ChainDownElement;
+import structures.chain.util.ChainDownIterator;
 /**
  * Double-linked chain
  * 
@@ -102,6 +104,32 @@ public class ChainUpDown<E> extends ChainDown<E>
     }
 
     @Override
+    public ChainUpDownElement<E> getElem(int index)
+    {
+        if(index < 0 || index >= length) {
+            return null;
+        }
+        
+        if(index <= length/2) {
+             return (ChainUpDownElement<E>) super.getElem(index);
+        }
+        else {
+            ChainUpDownElement<E> currentElement = (ChainUpDownElement<E>) getLastElem();
+            
+            for(int i = length; i > index+1; i--) {
+                if(currentElement != null) {
+                    currentElement = currentElement.getPrev();
+                }
+                else {
+                    return null;
+                }
+            }
+            
+            return currentElement;
+        }
+    }
+
+    @Override
     public E remove(int index) throws ChainIndexOutOfBoundsException
     {
         if(index < 0 || index >= length) {
@@ -127,29 +155,23 @@ public class ChainUpDown<E> extends ChainDown<E>
         return elementAtIndex.get();
     }
 
+    /**
+     * @param fromIndex
+     * @param toIndex
+     * @return new PackagedChainUpDown with contents of chain in between given indicies
+     */
     @Override
-    public ChainUpDownElement<E> getElem(int index)
+    public ChainUpDown<E> subList(int fromIndex, int toIndex)
     {
-        if(index < 0 || index >= length) {
-            return null;
+        ChainUpDown<E> subChain = new ChainUpDown<>();
+        
+        ChainDownElement<E> beginElem = getElem(fromIndex);
+        ChainDownIterator<E> iter = new ChainDownIterator<>(beginElem);
+        
+        for(int i = 0; i <= toIndex - fromIndex; i++) {
+            subChain.add(iter.next());
         }
         
-        if(index <= length/2) {
-             return (ChainUpDownElement<E>) super.getElem(index);
-        }
-        else {
-            ChainUpDownElement<E> currentElement = (ChainUpDownElement<E>) getLastElem();
-            
-            for(int i = length; i > index+1; i--) {
-                if(currentElement != null) {
-                    currentElement = currentElement.getPrev();
-                }
-                else {
-                    return null;
-                }
-            }
-            
-            return currentElement;
-        }
+        return subChain;
     }
 }

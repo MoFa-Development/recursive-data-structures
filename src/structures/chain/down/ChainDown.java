@@ -176,9 +176,23 @@ public class ChainDown<E> extends Chain<E>
         return null;
     }
 
+    /**
+     * @param fromIndex
+     * @param toIndex
+     * @return new PackagedChainUpDown with contents of chain in between given indicies
+     */
     @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        // TODO Auto-generated method stub
-        return null;
+    public ChainDown<E> subList(int fromIndex, int toIndex)
+    {
+        ChainDown<E> subChain = new ChainDown<>();
+        
+        ChainDownElement<E> beginElem = getElem(fromIndex);
+        ChainDownIterator<E> iter = new ChainDownIterator<>(beginElem);
+        
+        for(int i = 0; i <= toIndex - fromIndex; i++) {
+            subChain.add(iter.next());
+        }
+        
+        return subChain;
     }
 }

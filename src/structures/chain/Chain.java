@@ -131,10 +131,19 @@ public abstract class Chain<E> extends AbstractList<E>
     @SuppressWarnings("unchecked")
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
+        if(obj == null) {
             return false;
+        }
+        
+        if(this == obj) {
+            return true;
+        }
+            
+        try {
+            if (!super.equals(obj))
+                return false;    
+        } catch (Exception ignored) {}
+        
         if (getClass() != obj.getClass())
             return false;
 

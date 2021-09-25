@@ -18,7 +18,7 @@ public class Test
     
     public Test() throws ChainIndexOutOfBoundsException
     {
-        chainA = new PackagedChainUpDown<>();
+        chainA = new PackagedChainUpDown<>(2);
 
         chainA.add("Bremen");
         chainA.add("Hamburg");
@@ -32,12 +32,13 @@ public class Test
         System.out.println(")");
 
 
-        chainB = new PackagedChainUpDown<>();
+        chainB = new PackagedChainUpDown<>(2);
 
         chainB.add("Bremen");
         chainB.add("Hamburg");
         chainB.add("Berlin");
         chainB.add("Köln");
+        chainB.add("München");
 
         System.out.print(chainB);
         System.out.print(" - (");
@@ -45,5 +46,7 @@ public class Test
         System.out.println(")");
 
         System.out.println(chainA.equals(chainB));
+
+        System.out.println(chainA.subList(1, 3));
     }
 }

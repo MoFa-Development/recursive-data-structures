@@ -1,13 +1,12 @@
 package structures.chain.updown.packaged;
 
-import java.util.List;
-
 import exceptions.ChainIndexOutOfBoundsException;
 import structures.chain.Chain;
 import structures.chain.ChainElement;
 import structures.chain.down.ChainDownElement;
 import structures.chain.updown.ChainUpDown;
 import structures.chain.updown.ChainUpDownElement;
+import structures.chain.util.ChainDownIterator;
 import structures.chain.util.ChainUpDownListIterator;
 
 
@@ -153,7 +152,8 @@ public class PackagedChainUpDown<E> extends Chain<E>
     }
 
     @Override
-    public ChainElement<E> getElem(int index) {
+    public ChainElement<E> getElem(int index)
+    {
         int i = 0;
 
         for(PackageUpDown<E> pkg: packages) {
@@ -168,14 +168,29 @@ public class PackagedChainUpDown<E> extends Chain<E>
     }
 
     @Override
-    public E set(int arg0, E arg1) {
+    public E set(int index, E obj)
+    {
         // TODO Auto-generated method stub
         return null;
     }
 
+    /**
+     * @param fromIndex
+     * @param toIndex
+     * @return new PackagedChainUpDown with contents of chain in between given indicies
+     */
     @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        // TODO Auto-generated method stub
-        return null;
+    public PackagedChainUpDown<E> subList(int fromIndex, int toIndex)
+    {
+        PackagedChainUpDown<E> subChain = new PackagedChainUpDown<>();
+        
+        ChainDownElement<E> beginElem = (ChainDownElement<E>) getElem(fromIndex);
+        ChainDownIterator<E> iter = new ChainDownIterator<>(beginElem);
+        
+        for(int i = 0; i <= toIndex - fromIndex; i++) {
+            subChain.add(iter.next());
+        }
+        
+        return subChain;
     }
 }
