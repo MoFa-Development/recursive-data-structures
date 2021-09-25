@@ -1,5 +1,5 @@
 import exceptions.ChainIndexOutOfBoundsException;
-import structures.chain.updown.ChainUpDown;
+import structures.chain.updown.packaged.PackagedChainUpDown;
 
 /**
  * Test class
@@ -9,8 +9,7 @@ import structures.chain.updown.ChainUpDown;
  */
 public class Test
 {
-    ChainUpDown<String> chainA;
-    ChainUpDown<String> chainB;
+    PackagedChainUpDown<String> chain;
 
     public static void main(String[] args) throws ChainIndexOutOfBoundsException {
         new Test();
@@ -18,34 +17,20 @@ public class Test
     
     public Test() throws ChainIndexOutOfBoundsException
     {
-        chainA = new ChainUpDown<>();
+        chain = new PackagedChainUpDown<>();
 
-        chainA.add("Bremen");
-        chainA.add("Hamburg");
-        chainA.add("Berlin");
-        chainA.add("Köln");
-        chainA.add("München");
+        chain.add("Bremen");
+        chain.add("Hamburg");
+        chain.add("Berlin");
+        chain.add("Köln");
+        chain.add("München");
 
-
-        System.out.print(chainA);
+        System.out.print(chain);
         System.out.print(" - (");
-        System.out.print(chainA.size());
+        System.out.print(chain.size());
         System.out.println(")");
 
-
-        chainB = new ChainUpDown<>();
-
-        chainB.add("Bremen");
-        chainB.add("Manchester");
-        chainB.add("Plymouth");
-
-
-        chainA.retainAll(chainB);
-
-
-        System.out.print(chainA);
-        System.out.print(" - (");
-        System.out.print(chainA.size());
-        System.out.println(")");
+        System.out.println("");
+        System.out.println(chain.get(2));
     }
 }

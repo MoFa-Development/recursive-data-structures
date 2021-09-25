@@ -5,11 +5,11 @@ import java.util.NoSuchElementException;
 
 import structures.chain.down.ChainDownElement;
 
-public class ChainIterator<E> implements Iterator<E> {
+public class ChainDownIterator<E> implements Iterator<E> {
 
     private ChainDownElement<E> currentElement;
 
-    public ChainIterator(ChainDownElement<E> beginElem)
+    public ChainDownIterator(ChainDownElement<E> beginElem)
     {
         this.currentElement = beginElem;
     }
@@ -33,4 +33,7 @@ public class ChainIterator<E> implements Iterator<E> {
         return obj;
     }
     
+    public ChainDownElement<E> getCurrentElement() {
+        return currentElement;
+    }
 }

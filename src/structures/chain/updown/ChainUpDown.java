@@ -1,7 +1,5 @@
 package structures.chain.updown;
 
-import java.util.ArrayList;
-
 import exceptions.ChainIndexOutOfBoundsException;
 import structures.chain.ChainElement;
 import structures.chain.down.ChainDown;
@@ -40,6 +38,7 @@ public class ChainUpDown<E> extends ChainDown<E>
     {
         this.lastElement = (ChainUpDownElement<E>) lastElement;
     }
+
 
     @Override
     public boolean add(E obj)
@@ -154,32 +153,5 @@ public class ChainUpDown<E> extends ChainDown<E>
             
             return currentElement;
         }
-    }
-
-    @Override
-    public E getLast()
-    {
-        return getLastElement().get();
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public E[] toArray()
-    {
-        ArrayList<E> list = new ArrayList<>();
-        ChainUpDownElement<E> currentElement = (ChainUpDownElement<E>) getFirstElement();
-        
-        for(int i = 0; i < size(); i++) {
-            if(currentElement != null) {
-                list.add(currentElement.get());
-                
-                currentElement = currentElement.getNext();
-            }
-            else {
-                return null;
-            }
-        }
-        
-        return (E[]) list.toArray();
     }
 }

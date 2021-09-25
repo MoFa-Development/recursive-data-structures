@@ -1,5 +1,7 @@
 package structures.chain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import exceptions.ChainIndexOutOfBoundsException;
@@ -15,9 +17,6 @@ public abstract class Chain<E> implements Collection<E>
 {    
     protected int length = 0;
 
-    /**
-     * @return total length of the chain
-     */
     @Override
     public int size()
     {
@@ -33,6 +32,13 @@ public abstract class Chain<E> implements Collection<E>
      */
     public abstract boolean add(E obj, int index) throws ChainIndexOutOfBoundsException;
 
+    @Override
+    public void clear()
+    {
+        setFirstElement(null);
+        setLastElement(null);
+    }
+    
     /**
      * Remove data at specific index
      * 
@@ -49,14 +55,90 @@ public abstract class Chain<E> implements Collection<E>
     public abstract E get(int index) throws ChainIndexOutOfBoundsException;
 
     /**
-     * @return data at the end of the chain
+     * @param index 
+     * @return element at spcified index or null if index out of bounds
      */
-    public abstract E getLast();
+    protected abstract ChainElement<E> getElement(int index);
 
     /**
-     * @return chain data in string representation
+     * @return data at the beginning of the chain
      */
-    public abstract String toString();
+    public E getFirst() {
+        ChainElement<E> firstElem = this.getFirstElement();
+        
+        if(firstElem == null) {
+            return null;
+        }
+
+        return firstElem.get();
+    }
+
+    /**
+     * @return data at the end of the chain
+     */
+    public E getLast() {
+        ChainElement<E> lastElem = this.getLastElement();
+        
+        if(lastElem == null) {
+            return null;
+        }
+
+        return lastElem.get();
+    }
+
+    /**
+     * @return first element of the chain
+     */
+    public abstract ChainElement<E> getFirstElement();
+
+    /**
+     * @return last element of the chain
+     */
+    public abstract ChainElement<E> getLastElement();
+
+    /**
+     * Set first element
+     * @param firstElement
+     */
+    public abstract void setFirstElement(ChainElement<E> firstElement);
+
+    /**
+     * Set last element
+     * @param lastElement
+     */
+    public abstract void setLastElement(ChainElement<E> lastElement);
+
+    /**
+     * @return array representation of the chain
+     */
+    @SuppressWarnings("unchecked")
+    public E[] toArray()
+    {
+        ArrayList<E> list = new ArrayList<>();
+        
+        for(E obj: this) {
+            list.add(obj);
+        }
+        
+        return (E[]) list.toArray();
+    }
+
+    /**
+     * @return array representation of the chain
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T[] toArray(T[] a)
+    {
+        return (T[]) toArray();
+    }
+
+    /**
+     * @return string representation of the chain
+     */
+    public String toString()
+    {
+        return Arrays.toString(toArray());
+    }
 
     /**
      * @param index

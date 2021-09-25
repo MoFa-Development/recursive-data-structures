@@ -2,10 +2,7 @@ package structures.chain.down;
 
 import structures.chain.Chain;
 import structures.chain.ChainElement;
-import structures.chain.util.ChainIterator;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import structures.chain.util.ChainDownIterator;
 
 import exceptions.ChainIndexOutOfBoundsException;
 
@@ -21,33 +18,31 @@ public class ChainDown<E> extends Chain<E>
     private ChainDownElement<E> lastElement;
 
 
+    @Override
     public ChainElement<E> getFirstElement()
     {
         return firstElement;
     }
 
+    @Override
     public ChainElement<E> getLastElement()
     {
         return lastElement;
     }
 
+    @Override
     public void setFirstElement(ChainElement<E> firstElement)
     {
         this.firstElement = (ChainDownElement<E>) firstElement;
     }
 
+    @Override
     public void setLastElement(ChainElement<E> lastElement)
     {
         this.lastElement = (ChainDownElement<E>) lastElement;
     }
 
-    @Override
-    public void clear()
-    {
-        setFirstElement(null);
-        setLastElement(null);
-    }
-    
+
     @Override
     public boolean add(E obj)
     {
@@ -123,10 +118,7 @@ public class ChainDown<E> extends Chain<E>
         return true;
     }
 
-    /**
-     * @return ObjecChainUpElement at spcified index or null if index out of bounds
-     * @param index the index to get the element from
-     */
+    @Override
     protected ChainDownElement<E> getElement(int index)
     {
         //? Is this even a good idea?
@@ -165,48 +157,8 @@ public class ChainDown<E> extends Chain<E>
     }
 
     @Override
-    public E getLast()
+    public ChainDownIterator<E> iterator()
     {
-        return getLastElement().get();
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public E[] toArray()
-    {
-        ArrayList<E> list = new ArrayList<>();
-        ChainDownElement<E> currentElement = (ChainDownElement<E>) getFirstElement();
-        
-        for(int i = 0; i < size(); i++) {
-            if(currentElement != null) {
-                list.add(currentElement.get());
-                
-                currentElement = currentElement.getNext();
-            }
-            else {
-                return null;
-            }
-        }
-        
-        return (E[]) list.toArray();
-    }
-
-    @Override
-    public String toString()
-    {
-        return Arrays.toString(toArray());
-    }
-
-    @Override
-    public ChainIterator<E> iterator()
-    {
-        return new ChainIterator<>((ChainDownElement<E>) this.getFirstElement());
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T[] toArray(T[] a)
-    {
-        return (T[]) toArray();
+        return new ChainDownIterator<>((ChainDownElement<E>) this.getFirstElement());
     }
 }
