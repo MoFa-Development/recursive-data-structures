@@ -13,24 +13,24 @@ public class PackageUpDown<E> extends ChainUpDown<E>
 {
     public PackageUpDown(ChainUpDownElement<E> firstElement)
     {
-        setFirstElement(firstElement);
-        setLastElement(firstElement);
+        setFirstElem(firstElement);
+        setLastElem(firstElement);
         this.length = 1;
     }
     
     public PackageUpDown(ChainUpDownElement<E> firstElement, int length)
     {
         super();
-        this.setFirstElement(firstElement);
+        this.setFirstElem(firstElement);
         this.length = length;
-        this.setLastElement(getElement(length-1));
+        this.setLastElem(getElem(length-1));
     }
     
     public PackageUpDown(ChainUpDownElement<E> firstElement, ChainUpDownElement<E> lastElement)
     {
         super();
-        this.setFirstElement(firstElement);
-        this.setLastElement(lastElement);
+        this.setFirstElem(firstElement);
+        this.setLastElem(lastElement);
 
         if(firstElement != null && lastElement != null) {
             ChainUpDownElement<E> currentCountElem = firstElement;
@@ -50,7 +50,7 @@ public class PackageUpDown<E> extends ChainUpDown<E>
     {
         int newLength = this.length / 2;
 
-        PackageUpDown<E> nextPackage = new PackageUpDown<>(getElement(newLength), this.length-newLength);
+        PackageUpDown<E> nextPackage = new PackageUpDown<>(getElem(newLength), this.length-newLength);
     
         this.length = newLength;
 
@@ -58,7 +58,7 @@ public class PackageUpDown<E> extends ChainUpDown<E>
     }
 
     @Override
-    public ChainUpDownElement<E> getElement(int index) {
-        return super.getElement(index);
+    public ChainUpDownElement<E> getElem(int index) {
+        return super.getElem(index);
     }
 }

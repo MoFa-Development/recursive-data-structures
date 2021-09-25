@@ -6,7 +6,7 @@ package exceptions;
  * @author Fabian Kessler 
  * @version v1.0.1-2021-09-23
  */
-public class ChainIndexOutOfBoundsException extends ChainException
+public class ChainIndexOutOfBoundsException extends IndexOutOfBoundsException
 { 
     public ChainIndexOutOfBoundsException(String errorMessage)
     {

@@ -31,6 +31,6 @@ public class Test
         System.out.println(")");
 
         System.out.println("");
-        System.out.println(chain.get(2));
+        System.out.println(chain.indexOf("Berlin"));
     }
 }

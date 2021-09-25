@@ -1,6 +1,6 @@
 package structures.chain.updown.packaged;
 
-import java.util.Iterator;
+import java.util.List;
 
 import exceptions.ChainIndexOutOfBoundsException;
 import structures.chain.Chain;
@@ -34,9 +34,9 @@ public class PackagedChainUpDown<E> extends Chain<E>
         if(packages.getLast() == null || packages.getLast().size() >= packageSize) {
             ChainUpDownElement<E> elem = new ChainUpDownElement<>(obj);
             
-            elem.setPrev((ChainUpDownElement<E>) getLastElement());
+            elem.setPrev((ChainUpDownElement<E>) getLastElem());
             
-            ChainUpDownElement<E> lastElem = (ChainUpDownElement<E>) getLastElement();
+            ChainUpDownElement<E> lastElem = (ChainUpDownElement<E>) getLastElem();
             if(lastElem != null) {
                 lastElem.setNext(elem);
             }
@@ -53,10 +53,9 @@ public class PackagedChainUpDown<E> extends Chain<E>
     }
 
     @Override
-    public boolean add(E obj, int index) throws ChainIndexOutOfBoundsException
+    public void add(int index, E obj) throws ChainIndexOutOfBoundsException
     {
         // TODO implement
-        return false;
     }
 
     @Override
@@ -68,7 +67,7 @@ public class PackagedChainUpDown<E> extends Chain<E>
     @Override
     public E get(int index) throws ChainIndexOutOfBoundsException
     {
-        ChainUpDownElement<E> elem = (ChainUpDownElement<E>) getElement(index);
+        ChainUpDownElement<E> elem = (ChainUpDownElement<E>) getElem(index);
 
         if(elem == null) {
             throw indexOutOfBounds(index);
@@ -109,62 +108,74 @@ public class PackagedChainUpDown<E> extends Chain<E>
     }
 
     @Override
-    public ChainElement<E> getFirstElement() {
+    public ChainElement<E> getFirstElem() {
         PackageUpDown<E> firstPackage = getFirstPackage();
         
         if(firstPackage == null) {
             return null;
         }
 
-        return firstPackage.getFirstElement();
+        return firstPackage.getFirstElem();
     }
 
     @Override
-    public ChainElement<E> getLastElement() {
+    public ChainElement<E> getLastElem() {
         PackageUpDown<E> lastPackage = getLastPackage();
         
         if(lastPackage == null) {
             return null;
         }
 
-        return lastPackage.getLastElement();
+        return lastPackage.getLastElem();
     }
 
     @Override
-    public void setFirstElement(ChainElement<E> firstElement) {
-        this.getFirstPackage().setFirstElement(firstElement);
+    public void setFirstElem(ChainElement<E> firstElement) {
+        this.getFirstPackage().setFirstElem(firstElement);
     }
 
     @Override
-    public void setLastElement(ChainElement<E> lastElement) {
-        this.getLastPackage().setLastElement(lastElement);        
+    public void setLastElem(ChainElement<E> lastElement) {
+        this.getLastPackage().setLastElem(lastElement);        
     }
 
     @Override
-    public Iterator<E> iterator()
+    public ChainDownIterator<E> listIterator()
     {
-        return new ChainDownIterator<>((ChainDownElement<E>) getFirstPackage().getFirstElement());
+        return new ChainDownIterator<>(this, (ChainDownElement<E>) getFirstPackage().getFirstElem());
     }
 
     @Override
-    public boolean remove(int index) throws ChainIndexOutOfBoundsException
+    public E remove(int index) throws ChainIndexOutOfBoundsException
     {
         // TODO Auto-generated method stub
-        return false;
+        return null;
     }
 
     @Override
-    protected ChainElement<E> getElement(int index) {
+    protected ChainElement<E> getElem(int index) {
         int i = 0;
 
         for(PackageUpDown<E> pkg: packages) {
             if(i + pkg.size() > index) {
-                return pkg.getElement(index-i);
+                return pkg.getElem(index-i);
             }
             
             i+= pkg.size();
         }
 
+        return null;
+    }
+
+    @Override
+    public E set(int arg0, E arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<E> subList(int fromIndex, int toIndex) {
+        // TODO Auto-generated method stub
         return null;
     }
 }
