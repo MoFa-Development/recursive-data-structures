@@ -1,7 +1,6 @@
 package structures.chain;
 
 import java.util.AbstractList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -17,13 +16,7 @@ import exceptions.ChainIndexOutOfBoundsException;
 public abstract class Chain<E> extends AbstractList<E>
 {    
     protected int length = 0;
-    
 
-    @Override
-    public boolean addAll(int index, Collection<? extends E> collection) {
-        // TODO implement
-        return false;
-    }
 
     @Override
     public void clear()
@@ -103,8 +96,22 @@ public abstract class Chain<E> extends AbstractList<E>
     public abstract E remove(int index);
 
     @Override
-    public abstract E set(int arg0, E arg1);
+    public E set(int index, E obj) throws ChainIndexOutOfBoundsException {
+        if(index < 0 || index >= length) {
+            throw indexOutOfBounds(index);
+        }
+        
+        ChainElement<E> elem = getElem(index);
 
+        if(elem == null) {
+            throw indexOutOfBounds(index);
+        }
+
+        elem.set(obj);
+
+        return obj;
+    }
+    
     /**
      * Set first element
      * @param firstElement

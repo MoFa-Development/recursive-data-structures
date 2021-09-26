@@ -207,13 +207,6 @@ public class PackagedChainUpDown<E> extends Chain<E>
         return null;
     }
 
-    @Override
-    public E set(int index, E obj)
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     /**
      * @param fromIndex
      * @param toIndex

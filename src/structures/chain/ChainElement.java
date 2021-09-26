@@ -15,6 +15,14 @@ public abstract class ChainElement<E> {
     }
 
     /**
+     * Overwrite stored data
+     * @param obj
+     */
+    public void set(E obj) {
+        this.obj = obj;
+    }
+
+    /**
      * @return data stored in element
      */
     public E get()

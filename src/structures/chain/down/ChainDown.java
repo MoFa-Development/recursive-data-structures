@@ -169,12 +169,6 @@ public class ChainDown<E> extends Chain<E>
         return null;
     }
 
-    @Override
-    public E set(int arg0, E arg1) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     /**
      * @param fromIndex
      * @param toIndex
