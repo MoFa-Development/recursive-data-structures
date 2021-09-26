@@ -87,8 +87,9 @@ public class ChainDown<E> extends Chain<E>
         }
         else {
             ChainDownElement<E> predecessorElem = getElem(index-1);
-            predecessorElem.setNext(elem);
+            
             elem.setNext(predecessorElem.getNext());
+            predecessorElem.setNext(elem);
         }
 
         length++;

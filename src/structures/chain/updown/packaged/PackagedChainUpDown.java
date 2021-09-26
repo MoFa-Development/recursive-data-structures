@@ -169,7 +169,7 @@ public class PackagedChainUpDown<E> extends Chain<E>
     @Override
     public ChainUpDownListIterator<E> listIterator()
     {
-        return new ChainUpDownListIterator<>(this, (ChainDownElement<E>) getFirstPackage().getFirstElem());
+        return new ChainUpDownListIterator<>(this, (ChainUpDownElement<E>) this.getFirstElem(), 0);
     }
 
     @Override

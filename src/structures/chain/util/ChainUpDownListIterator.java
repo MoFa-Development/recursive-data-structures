@@ -12,22 +12,28 @@ public class ChainUpDownListIterator<E> extends ChainDownIterator<E> implements 
     private ChainUpDownElement<E> currElem;
     protected int index;
 
-    public ChainUpDownListIterator(Chain<E> chain, ChainDownElement<E> beginElem)
-    {
-        super(beginElem);
-        index = 0;
+    public ChainUpDownListIterator(Chain<E> chain) {
+        super((ChainDownElement<E>) chain.getFirstElem());
+        this.index = 0;
         this.chain = chain;
     }
 
     public ChainUpDownListIterator(Chain<E> chain, int index)
     {
         super((ChainDownElement<E>) chain.getElem(index));
-        index = 0;
+        this.index = index;
+        this.chain = chain;
+    }
+
+    public ChainUpDownListIterator(Chain<E> chain, ChainUpDownElement<E> beginElem, int index)
+    {
+        super(beginElem);
+        this.index = index;
         this.chain = chain;
     }
 
     @Override
-    public ChainDownElement<E> getCurrElem()
+    public ChainUpDownElement<E> getCurrElem()
     {
         return this.currElem;
     }

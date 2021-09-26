@@ -1,6 +1,8 @@
 import exceptions.ChainIndexOutOfBoundsException;
+import structures.chain.down.ChainDown;
 import structures.chain.updown.ChainUpDown;
 import structures.chain.updown.packaged.PackagedChainUpDown;
+import structures.chain.util.ChainDownIterator;
 
 /**
  * Test class
@@ -11,7 +13,7 @@ import structures.chain.updown.packaged.PackagedChainUpDown;
 public class Test
 {
     PackagedChainUpDown<String> chainA;
-    ChainUpDown<String> chainB;
+    ChainDown<String> chainB;
 
     public static void main(String[] args) throws ChainIndexOutOfBoundsException {
         new Test();
@@ -35,7 +37,7 @@ public class Test
         System.out.println(")");
 
 
-        chainB = new ChainUpDown<>();
+        chainB = new ChainDown<>();
 
         chainB.add("B");
         chainB.add("C");

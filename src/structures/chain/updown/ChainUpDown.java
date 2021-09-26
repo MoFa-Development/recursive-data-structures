@@ -18,13 +18,13 @@ public class ChainUpDown<E> extends ChainDown<E>
 
 
     @Override
-    public ChainElement<E> getFirstElem()
+    public ChainUpDownElement<E> getFirstElem()
     {
         return firstElement;
     }
 
     @Override
-    public ChainElement<E> getLastElem()
+    public ChainUpDownElement<E> getLastElem()
     {
         return lastElement;
     }
@@ -52,8 +52,8 @@ public class ChainUpDown<E> extends ChainDown<E>
             setLastElem(elem);
         }
         else {
-            ((ChainUpDownElement<E>) getLastElem()).setNext(elem);
-            elem.setPrev((ChainUpDownElement<E>) getLastElem());
+            (getLastElem()).setNext(elem);
+            elem.setPrev(getLastElem());
 
             setLastElem(elem);
         }
@@ -74,7 +74,7 @@ public class ChainUpDown<E> extends ChainDown<E>
         
         if(index == 0) {
             if(getFirstElem() != null) {
-                ChainUpDownElement<E> formerFirstElement = (ChainUpDownElement<E>) getFirstElem();
+                ChainUpDownElement<E> formerFirstElement = getFirstElem();
                 elem.setNext(formerFirstElement);
                 formerFirstElement.setPrev(elem);
             }
@@ -114,7 +114,7 @@ public class ChainUpDown<E> extends ChainDown<E>
              return (ChainUpDownElement<E>) super.getElem(index);
         }
         else {
-            ChainUpDownElement<E> currentElement = (ChainUpDownElement<E>) getLastElem();
+            ChainUpDownElement<E> currentElement = getLastElem();
             
             for(int i = length; i > index+1; i--) {
                 if(currentElement != null) {
