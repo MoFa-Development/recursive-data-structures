@@ -91,6 +91,12 @@ public abstract class Chain<E> extends AbstractList<E>
     }
 
     @Override
+    public Iterator<E> iterator()
+    {
+        return listIterator();
+    }
+
+    @Override
     public abstract ListIterator<E> listIterator();
 
     @Override

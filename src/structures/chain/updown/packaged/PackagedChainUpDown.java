@@ -17,12 +17,14 @@ public class PackagedChainUpDown<E> extends Chain<E>
     protected ChainUpDown<PackageUpDown<E>> packages;
     private int packageSize;
 
-    public PackagedChainUpDown() {
+    public PackagedChainUpDown()
+    {
         this.packages = new ChainUpDown<>();
         this.packageSize = DEFAULT_PACKAGE_SIZE;
     }
 
-    public PackagedChainUpDown(int packageSize) {
+    public PackagedChainUpDown(int packageSize)
+    {
         this.packages = new ChainUpDown<>();
         this.packageSize = packageSize;
     }
@@ -54,7 +56,26 @@ public class PackagedChainUpDown<E> extends Chain<E>
     @Override
     public void add(int index, E obj) throws ChainIndexOutOfBoundsException
     {
-        // TODO implement
+        if(index < 0 || index > length) {
+            throw indexOutOfBounds(index);
+        }
+        
+        int i = 0;
+
+        if(packages.size() == 0) {
+            add(obj);
+        }
+        else {
+            for(PackageUpDown<E> pkg: packages) {
+                if(i + pkg.size() >= index) {
+                    pkg.add(index-i, obj);
+                }
+                
+                i+= pkg.size();
+            }
+        
+            length++;
+        }
     }
 
     @Override
@@ -75,16 +96,19 @@ public class PackagedChainUpDown<E> extends Chain<E>
         return elem.get();
     }
 
-    protected PackageUpDown<E> getFirstPackage() {
+    protected PackageUpDown<E> getFirstPackage()
+    {
         return this.packages.getFirst();
     }
 
-    protected PackageUpDown<E> getLastPackage() {
+    protected PackageUpDown<E> getLastPackage()
+    {
         return this.packages.getLast();
     }
 
     @Override
-    public E getFirst() {
+    public E getFirst()
+    {
         PackageUpDown<E> firstPackage = getFirstPackage();
         
         if(firstPackage == null) {
@@ -107,7 +131,8 @@ public class PackagedChainUpDown<E> extends Chain<E>
     }
 
     @Override
-    public ChainElement<E> getFirstElem() {
+    public ChainElement<E> getFirstElem()
+    {
         PackageUpDown<E> firstPackage = getFirstPackage();
         
         if(firstPackage == null) {
@@ -118,7 +143,8 @@ public class PackagedChainUpDown<E> extends Chain<E>
     }
 
     @Override
-    public ChainElement<E> getLastElem() {
+    public ChainElement<E> getLastElem()
+    {
         PackageUpDown<E> lastPackage = getLastPackage();
         
         if(lastPackage == null) {
@@ -129,12 +155,14 @@ public class PackagedChainUpDown<E> extends Chain<E>
     }
 
     @Override
-    public void setFirstElem(ChainElement<E> firstElement) {
+    public void setFirstElem(ChainElement<E> firstElement)
+    {
         this.getFirstPackage().setFirstElem(firstElement);
     }
 
     @Override
-    public void setLastElem(ChainElement<E> lastElement) {
+    public void setLastElem(ChainElement<E> lastElement)
+    {
         this.getLastPackage().setLastElem(lastElement);        
     }
 
@@ -147,8 +175,20 @@ public class PackagedChainUpDown<E> extends Chain<E>
     @Override
     public E remove(int index) throws ChainIndexOutOfBoundsException
     {
-        // TODO Auto-generated method stub
-        return null;
+        int i = 0;
+
+        E obj = null;
+
+        for(PackageUpDown<E> pkg: packages) {
+            if(i + pkg.size() > index) {
+                obj = pkg.getElem(index-i).get();
+                pkg.remove(index-i);
+            }
+            
+            i+= pkg.size();
+        }
+
+        return obj;
     }
 
     @Override

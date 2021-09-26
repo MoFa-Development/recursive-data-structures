@@ -56,9 +56,4 @@ public class PackageUpDown<E> extends ChainUpDown<E>
 
         return nextPackage;
     }
-
-    @Override
-    public ChainUpDownElement<E> getElem(int index) {
-        return super.getElem(index);
-    }
 }

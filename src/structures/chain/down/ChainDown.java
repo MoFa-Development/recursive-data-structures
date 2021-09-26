@@ -4,7 +4,6 @@ import structures.chain.Chain;
 import structures.chain.ChainElement;
 import structures.chain.util.ChainDownIterator;
 
-import java.util.List;
 import java.util.ListIterator;
 
 import exceptions.ChainIndexOutOfBoundsException;
