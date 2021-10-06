@@ -9,6 +9,12 @@
             "name": "Test",
             "request": "launch",
             "mainClass": "Test",
+        },
+        {
+            "type": "java",
+            "name": "Josephus",
+            "request": "launch",
+            "mainClass": "Josephus",
         }
     ]
 }

@@ -11,6 +11,7 @@ import structures.chain.util.ChainDownIterator;
  * @author Moritz Decker 
  * @version v1.0.1-2021-09-23
  */
+import structures.chain.util.ChainUpDownListIterator;
 public class ChainUpDown<E> extends ChainDown<E>
 {
     private ChainUpDownElement<E> firstElement;
@@ -173,5 +174,10 @@ public class ChainUpDown<E> extends ChainDown<E>
         }
         
         return subChain;
+    }
+
+    @Override
+    public ChainUpDownListIterator<E> listIterator() {
+        return new ChainUpDownListIterator<>(this);
     }
 }

@@ -9,6 +9,15 @@ import structures.chain.down.ChainDownElement;
 public class ChainDownIterator<E> implements Iterator<E> {
 
     private ChainDownElement<E> currElem;
+    private ChainDownElement<E> lastReturnedElement;
+
+    protected void setLastReturnedElem(ChainDownElement<E> elem) {
+        this.lastReturnedElement = elem;
+    }
+
+    protected ChainDownElement<E> getLastReturnedElem() {
+        return lastReturnedElement;
+    }
 
     public ChainDownIterator(ChainDownElement<E> beginElem)
     {
@@ -24,14 +33,11 @@ public class ChainDownIterator<E> implements Iterator<E> {
     @Override
     public E next()
     {
-        if(getCurrElem() == null) {
+        if(!hasNext()) {
             throw new NoSuchElementException("Iterated over end of the chain.");
         }
 
-        E obj = getCurrElem().get();
-        setCurrElem(getCurrElem().getNext());
-
-        return obj;
+        return nextElem().get();
     }
     
     public ChainDownElement<E> getCurrElem()
@@ -42,5 +48,19 @@ public class ChainDownIterator<E> implements Iterator<E> {
     public void setCurrElem(ChainDownElement<E> elem)
     {
         this.currElem = elem;
+    }
+
+    public ChainDownElement<E> nextElem() throws NoSuchElementException
+    {
+        if(!hasNext()) {
+            throw new NoSuchElementException("Iterated over end of chain.");
+        }
+
+        ChainDownElement<E> elem = getCurrElem();
+        setCurrElem(getCurrElem().getNext());
+
+        setLastReturnedElem(elem);
+
+        return elem;
     }
 }

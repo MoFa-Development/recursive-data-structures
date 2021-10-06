@@ -18,6 +18,10 @@ public abstract class Chain<E> extends AbstractList<E>
     protected int length = 0;
 
 
+    public void shrink(int amount) {
+        this.length -= amount;
+    }
+
     public void addAll(E[] arr) {
         for(E obj: arr) {
             this.add(obj);
