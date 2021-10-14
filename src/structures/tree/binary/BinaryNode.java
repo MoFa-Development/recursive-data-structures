@@ -1,5 +1,9 @@
 package structures.tree.binary;
 
+/**
+ * Node of a binary tree, containing any object of generic type E
+ * @author Moritz Decker
+ */
 public class BinaryNode<E> {
     protected BinaryNode<E> parent;
     protected BinaryNode<E> childLeft;

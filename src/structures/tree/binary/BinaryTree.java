@@ -1,5 +1,9 @@
 package structures.tree.binary;
 
+/**
+ * Binary tree 
+ * @author Moritz Decker
+ */
 public class BinaryTree<E> {
     protected BinaryNode<E> root;
 
