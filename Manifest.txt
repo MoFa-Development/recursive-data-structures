@@ -1,2 +1,2 @@
-Main-Class: Test
+Main-Class: examples.Test
 Class-Path: src/

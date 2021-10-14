@@ -8,13 +8,13 @@
             "type": "java",
             "name": "Test",
             "request": "launch",
-            "mainClass": "Test",
+            "mainClass": "examples.Test",
         },
         {
             "type": "java",
             "name": "Josephus",
             "request": "launch",
-            "mainClass": "Josephus",
+            "mainClass": "examples.Josephus",
         }
     ]
 }
