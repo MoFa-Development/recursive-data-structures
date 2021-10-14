@@ -1,21 +1,22 @@
 package structures.tree.binary;
 
 /**
- * Binary tree 
+ * Binary tree
  * @author Moritz Decker
  */
-public class BinaryTree<E> {
+public abstract class BinaryTree<E> {
+
     protected BinaryTreeNode<E> root;
 
-    public BinaryTree() {
+    protected BinaryTree() {
         this.root = null;
     }
 
-    public BinaryTree(E obj) {
+    protected BinaryTree(E obj) {
         this.root = new BinaryTreeNode<E>(obj);
     }
 
-    public BinaryTree(BinaryTreeNode<E> root) {
+    protected BinaryTree(BinaryTreeNode<E> root) {
         this.root = root;
     }
 }

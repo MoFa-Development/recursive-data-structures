@@ -37,12 +37,18 @@ public class BinaryTreeNode<E> {
 
     public void setChildLeft(BinaryTreeNode<E> childLeft) {
         this.childLeft = childLeft;
-        this.childLeft.setParent(this);
+
+        if(this.childLeft != null) {
+            this.childLeft.setParent(this);
+        }
     }
 
     public void setChildRight(BinaryTreeNode<E> childRight) {
         this.childRight = childRight;
-        this.childRight.setParent(this);
+        
+        if(this.childRight != null) {
+            this.childRight.setParent(this);
+        }
     }
 
     public void setParent(BinaryTreeNode<E> parent) {
