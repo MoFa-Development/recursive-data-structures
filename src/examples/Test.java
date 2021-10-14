@@ -2,8 +2,7 @@ package examples;
 
 import java.util.Random;
 
-import exceptions.ChainIndexOutOfBoundsException;
-import structures.tree.binary.BinaryNode;
+import structures.tree.binary.BinaryTreeNode;
 import structures.tree.binary.BinarySearchTree;
 
 /**
@@ -39,7 +38,9 @@ public class Test
             }
         }
 
-        BinaryNode<Integer> node = tree.search(numToSearch);
+        tree.remove(500);
+
+        BinaryTreeNode<Integer> node = tree.search(numToSearch);
         
         while(node != null) {
             System.out.println(node.getObj());

@@ -4,26 +4,26 @@ package structures.tree.binary;
  * Node of a binary tree, containing any object of generic type E
  * @author Moritz Decker
  */
-public class BinaryNode<E> {
-    protected BinaryNode<E> parent;
-    protected BinaryNode<E> childLeft;
-    protected BinaryNode<E> childRight;
+public class BinaryTreeNode<E> {
+    protected BinaryTreeNode<E> parent;
+    protected BinaryTreeNode<E> childLeft;
+    protected BinaryTreeNode<E> childRight;
     
     protected E obj;
 
-    public BinaryNode(E obj) {
+    public BinaryTreeNode(E obj) {
         this.obj = obj;
     }
 
-    public BinaryNode<E> getParent() {
+    public BinaryTreeNode<E> getParent() {
         return parent;
     }
 
-    public BinaryNode<E> getChildLeft() {
+    public BinaryTreeNode<E> getChildLeft() {
         return childLeft;
     }
 
-    public BinaryNode<E> getChildRight() {
+    public BinaryTreeNode<E> getChildRight() {
         return childRight;
     }
 
@@ -35,17 +35,17 @@ public class BinaryNode<E> {
         this.obj = obj;
     }
 
-    public void setChildLeft(BinaryNode<E> childLeft) {
+    public void setChildLeft(BinaryTreeNode<E> childLeft) {
         this.childLeft = childLeft;
         this.childLeft.setParent(this);
     }
 
-    public void setChildRight(BinaryNode<E> childRight) {
+    public void setChildRight(BinaryTreeNode<E> childRight) {
         this.childRight = childRight;
         this.childRight.setParent(this);
     }
 
-    public void setParent(BinaryNode<E> parent) {
+    public void setParent(BinaryTreeNode<E> parent) {
         this.parent = parent;
     }
 }

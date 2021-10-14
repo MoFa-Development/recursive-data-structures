@@ -6,6 +6,8 @@ package structures.tree.binary;
  */
 public class BinarySearchTree extends BinaryTree<Integer> {
     
+    protected boolean removeInOrder = true;
+
     public BinarySearchTree() {
         super();
     }
@@ -14,7 +16,7 @@ public class BinarySearchTree extends BinaryTree<Integer> {
         super(obj);
     }
 
-    public BinarySearchTree(BinaryNode<Integer> root) {
+    public BinarySearchTree(BinaryTreeNode<Integer> root) {
         super(root);
     }
 
@@ -23,9 +25,9 @@ public class BinarySearchTree extends BinaryTree<Integer> {
      * @param num number to insert
      * @return tree node where the number was inserted
      */
-    public BinaryNode<Integer> insert(int num) {
+    public BinaryTreeNode<Integer> insert(int num) {
         if(root == null) {
-            root = new BinaryNode<>(num);
+            root = new BinaryTreeNode<>(num);
             return root;
         }
 
@@ -38,10 +40,10 @@ public class BinarySearchTree extends BinaryTree<Integer> {
      * @param current current root node
      * @return tree node where the number was inserted
      */
-    protected BinaryNode<Integer> recursiveInsert(int num, BinaryNode<Integer> current) {
+    protected BinaryTreeNode<Integer> recursiveInsert(int num, BinaryTreeNode<Integer> current) {
         if(current.getObj() > num) {
             if(current.getChildLeft() == null) {
-                BinaryNode<Integer> node = new BinaryNode<>(num);
+                BinaryTreeNode<Integer> node = new BinaryTreeNode<>(num);
                 current.setChildLeft(node);
                 return node;
             } else {
@@ -49,7 +51,7 @@ public class BinarySearchTree extends BinaryTree<Integer> {
             }
         } else {
             if(current.getChildRight() == null) {
-                BinaryNode<Integer> node = new BinaryNode<>(num);
+                BinaryTreeNode<Integer> node = new BinaryTreeNode<>(num);
                 current.setChildRight(node);
                 return node;
             } else {
@@ -63,7 +65,7 @@ public class BinarySearchTree extends BinaryTree<Integer> {
      * @param num number to search
      * @return tree node containing the searched number or null if number not in tree
      */
-    public BinaryNode<Integer> search(int num) {
+    public BinaryTreeNode<Integer> search(int num) {
         return recursiveSearch(num, root);
     }
 
@@ -73,7 +75,7 @@ public class BinarySearchTree extends BinaryTree<Integer> {
      * @param current current node
      * @return tree node containing the searched number or null if number not in tree
      */
-    protected BinaryNode<Integer> recursiveSearch(int num, BinaryNode<Integer> current) {
+    protected BinaryTreeNode<Integer> recursiveSearch(int num, BinaryTreeNode<Integer> current) {
         if(current == null) {
             return null;
         }
@@ -87,5 +89,53 @@ public class BinarySearchTree extends BinaryTree<Integer> {
         } else {
             return recursiveSearch(num, current.getChildRight());
         }
+    }
+
+    /**
+     * Remove node with provided number 
+     * @param num
+     * @return removed node
+     */
+    public BinaryTreeNode<Integer> remove(int num) {
+        BinaryTreeNode<Integer> node = search(num);
+
+        if(node != null) {
+            BinaryTreeNode<Integer> parent = node.getParent();
+            BinaryTreeNode<Integer> childLeft = node.getChildLeft();
+            BinaryTreeNode<Integer> childRight = node.getChildRight();
+
+            BinaryTreeNode<Integer> successor = null;
+
+            boolean isLeftChild = parent == null || node.getObj() < parent.getObj();
+
+            if(childLeft == null && childRight != null) {
+                successor = childRight;
+            } else if(childRight == null) {
+                successor = childLeft;
+            } else {
+                if(removeInOrder) {
+                    successor = childRight;
+                    childRight.setChildLeft(childLeft);
+                } else {
+                    successor = childLeft;
+                    childLeft.setChildRight(childRight);
+                }
+                removeInOrder = !removeInOrder;
+            }
+
+            if(successor != null) {
+                successor.setParent(parent);
+            }
+
+            if(parent == null) {
+                 root = successor;
+            } else if(isLeftChild) {
+                parent.setChildLeft(successor);
+            } else {
+                parent.setChildRight(successor);
+            }
+        }
+        
+        return node;
     }
 }
