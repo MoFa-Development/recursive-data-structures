@@ -6,7 +6,7 @@ package structures.tree.binary;
  */
 public class BinarySearchTree extends BinaryTree<Integer> {
     
-    protected boolean removeInOrder = true;
+    protected boolean nextRemoveInOrder = true;
 
     public BinarySearchTree() {
         super();
@@ -113,14 +113,14 @@ public class BinarySearchTree extends BinaryTree<Integer> {
             } else if(childRight == null) {
                 successor = childLeft;
             } else {
-                if(removeInOrder) {
+                if(nextRemoveInOrder) {
                     successor = childRight;
                     childRight.setChildLeft(childLeft);
                 } else {
                     successor = childLeft;
                     childLeft.setChildRight(childRight);
                 }
-                removeInOrder = !removeInOrder;
+                nextRemoveInOrder = !nextRemoveInOrder;
             }
 
             if(successor != null) {
