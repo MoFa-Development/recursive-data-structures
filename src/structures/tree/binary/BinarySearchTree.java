@@ -4,19 +4,19 @@ package structures.tree.binary;
  * Abstract binary search tree, implementing all operations, just needs a compare method to be defined.
  * @author Moritz Decker
  */
-public abstract class BinarySearchTree<E> extends BinaryTree<E> {
+public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
     
     protected boolean nextRemoveInOrder = true;
 
-    protected BinarySearchTree() {
+    public BinarySearchTree() {
         super();
     }
 
-    protected BinarySearchTree(E obj) {
+    public BinarySearchTree(E obj) {
         super(obj);
     }
 
-    protected BinarySearchTree(BinaryTreeNode<E> root) {
+    public BinarySearchTree(BinaryTreeNode<E> root) {
         super(root);
     }
 
@@ -46,9 +46,9 @@ public abstract class BinarySearchTree<E> extends BinaryTree<E> {
                 BinaryTreeNode<E> node = new BinaryTreeNode<>(obj);
                 current.setChildLeft(node);
 
-                System.out.print(current.getObj());
-                System.out.print(" --L--> ");
-                System.out.println(node.getObj());
+                // System.out.print(current.getObj());
+                // System.out.print(" --L--> ");
+                // System.out.println(node.getObj());
 
                 return node;
             } else {
@@ -59,9 +59,9 @@ public abstract class BinarySearchTree<E> extends BinaryTree<E> {
                 BinaryTreeNode<E> node = new BinaryTreeNode<>(obj);
                 current.setChildRight(node);
                 
-                System.out.print(current.getObj());
-                System.out.print(" --R--> ");
-                System.out.println(node.getObj());
+                // System.out.print(current.getObj());
+                // System.out.print(" --R--> ");
+                // System.out.println(node.getObj());
                 
                 return node;
             } else {
@@ -111,8 +111,8 @@ public abstract class BinarySearchTree<E> extends BinaryTree<E> {
     public BinaryTreeNode<E> remove(E obj) {
         BinaryTreeNode<E> node = search(obj);
         
-        System.out.print("remove: ");
-        System.out.println(obj);
+        // System.out.print("remove: ");
+        // System.out.println(obj);
 
         return remove(node);
     }
@@ -169,5 +169,7 @@ public abstract class BinarySearchTree<E> extends BinaryTree<E> {
      * @param b
      * @return {boolean} is a predecessor of b?
      */
-    public abstract boolean compare(E a, E b);
+    public boolean compare(E a, E b) {
+        return a.compareTo(b) < 0;
+    }
 }
